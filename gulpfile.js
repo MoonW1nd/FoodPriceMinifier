@@ -1,6 +1,7 @@
 'use strict'
 
 const gulp = require('gulp');
+const babel = require('gulp-babel');
 const stylus = require('gulp-stylus');
 const sourcemaps = require('gulp-sourcemaps');
 const gulpIf = require('gulp-if');
@@ -14,15 +15,25 @@ const isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV === 'develop
 
 //подключение стилей
 gulp.task('styles', function(){
-    return gulp.src('frontend/css/main.styl', {base: 'frontend'})
-        .pipe(gulpIf(isDevelopment, sourcemaps.init()))
-        .pipe(stylus({
-            pretty:true,
-            use:[autoprefixer()]
-        }))
-        .pipe(gulpIf(isDevelopment, sourcemaps.write()))
-        .pipe(gulp.dest('public'));
+		return gulp.src('frontend/css/main.styl', {base: 'frontend'})
+				.pipe(gulpIf(isDevelopment, sourcemaps.init()))
+				.pipe(stylus({
+						pretty:true,
+						use:[autoprefixer()]
+				}))
+				.pipe(gulpIf(isDevelopment, sourcemaps.write()))
+				.pipe(gulp.dest('public'));
 });
+
+// babel
+gulp.task('babel', () =>
+		gulp.src('frontend/assets/js/app.jsx')
+				.pipe(babel({
+					plugins: ['transform-react-jsx'],
+					presets: ['es2015']
+				}))
+				.pipe(gulp.dest('public/js'))
+);
 
 //@TODO: Сделать обработку ошибок , чтобы gulp не приходилось перезагружать
 //подключение специального сборщика для стилей safari
@@ -68,36 +79,36 @@ gulp.task('styles', function(){
 
 // удаление паки public для пересборки проекта
 gulp.task('clean', function() {
-    return del('public');
+		return del('public');
 });
 
 
 //копирование вспомогательных файлов в паблик
 gulp.task('assets', function() {
-    return gulp.src('frontend/assets/**')
-        .pipe(newer('public'))
-        .pipe(gulp.dest('public'));
+		return gulp.src(['frontend/assets/**',"!frontend/assets/js/app.jsx"])
+				.pipe(newer('public'))
+				.pipe(gulp.dest('public'));
 });
 
 
 //команда сборки и запуска browser-sync
-gulp.task('build', ['styles', 'assets', 'watch','serve']);
+gulp.task('build', ['styles',"babel", 'assets', 'watch','serve']);
 
 
 //слежение за файлами , при изменении перезагружает браузер
 gulp.task('watch', function() {
-    gulp.watch('frontend/css/**/*.*', ['styles']).on('change', browserSync.reload);
-    gulp.watch('frontend/assets/**/*.*', ['assets']).on('change', browserSync.reload);
+		gulp.watch('frontend/css/**/*.*', ['styles']).on('change', browserSync.reload);
+		gulp.watch('frontend/assets/**/*.*', ['assets']).on('change', browserSync.reload);
 });
 
 //функция перезагпузки браузера для HTML файлов
 gulp.task('serve',function () {
-    browserSync.init({
-        server: {
-            baseDir: "./public"
-        }
-    });
-    browserSync.watch('public/**/*.*').on('change', browserSync.reload);
+		browserSync.init({
+				server: {
+						baseDir: "./public"
+				}
+		});
+		browserSync.watch('public/**/*.*').on('change', browserSync.reload);
 });
 
 
