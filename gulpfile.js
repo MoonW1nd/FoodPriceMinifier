@@ -98,7 +98,8 @@ gulp.task('build', ['styles',"babel", 'assets', 'watch','serve']);
 //слежение за файлами , при изменении перезагружает браузер
 gulp.task('watch', function() {
 		gulp.watch('frontend/css/**/*.*', ['styles']).on('change', browserSync.reload);
-		gulp.watch('frontend/assets/**/*.*', ['assets']).on('change', browserSync.reload);
+		gulp.watch(['frontend/assets/**/*.*', "!frontend/assets/js/app.jsx"], ['assets']).on('change', browserSync.reload);
+		gulp.watch("frontend/assets/js/app.jsx", ['babel']).on('change', browserSync.reload);
 });
 
 //функция перезагпузки браузера для HTML файлов
