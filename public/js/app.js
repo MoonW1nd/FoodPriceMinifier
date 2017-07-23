@@ -1,14 +1,25 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-'use strict';
+"use strict";
 
-var _debug = require('debug');
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _reactDom = require("react-dom");
+
+var ReactDOM = _interopRequireWildcard(_reactDom);
+
+var _debug = require("debug");
 
 var console = _interopRequireWildcard(_debug);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 var React = require('react');
-var ReactDOM = require('react-dom');
 
 
 var my_news = [{
@@ -25,66 +36,133 @@ var my_news = [{
 console.log(React);
 console.log(ReactDOM);
 
-var News = React.createClass({
-	render: function render() {
-		var data = this.props.lastNews;
-		var newsTemplate = void 0;
-		if (data.length > 0) newsTemplate = data.map(function (item, index) {
+var Article = function (_React$Component) {
+	_inherits(Article, _React$Component);
+
+	function Article() {
+		_classCallCheck(this, Article);
+
+		return _possibleConstructorReturn(this, (Article.__proto__ || Object.getPrototypeOf(Article)).apply(this, arguments));
+	}
+
+	_createClass(Article, [{
+		key: "render",
+		value: function render() {
+			var author = this.props.data.author,
+			    text = this.props.data.text;
 			return React.createElement(
-				'div',
-				{ key: index },
+				"div",
+				{ className: "article" },
 				React.createElement(
-					'p',
-					{ className: 'news__author' },
-					item.author,
-					':'
+					"p",
+					{ className: "news__author" },
+					author
 				),
 				React.createElement(
-					'p',
-					{ className: 'news__text' },
-					item.text
+					"p",
+					{ className: "news__text" },
+					text
 				)
 			);
-		});else newsTemplate = React.createElement(
-			'p',
-			null,
-			'\u041A \u0441\u043E\u0436\u0430\u043B\u0435\u043D\u0438\u044E \u043D\u043E\u0432\u043E\u0441\u0442\u0435\u0439 \u043D\u0435\u0442'
-		);
-		return React.createElement(
-			'div',
-			{ className: 'News' },
-			newsTemplate,
-			React.createElement(
-				'strong',
-				{ className: data.length > 0 ? 'count-news' : 'count-news none' },
-				'\u0412\u0441\u0435\u0433\u043E \u043D\u043E\u0432\u043E\u0441\u0442\u0435\u0439: ',
-				data.length
-			)
-		);
-	}
-});
+		}
+	}]);
 
-var Comments = React.createClass({
-	render: function render() {
-		return React.createElement(
-			'div',
-			{ className: 'comments' },
-			'\u041D\u0435\u0442 \u043D\u043E\u0432\u043E\u0441\u0442\u0435\u0435 - \u043A\u043E\u043C\u0435\u043D\u0442\u0438\u0440\u043E\u0432\u0430\u0442\u044C \u043D\u0435\u0447\u0435\u0433\u043E'
-		);
-	}
-});
+	return Article;
+}(React.Component);
 
-var App = React.createClass({
-	render: function render() {
-		return React.createElement(
-			'div',
-			{ className: 'App' },
-			'\u0412\u0441\u0435\u043C \u043F\u0440\u0438\u0432\u0435\u0442, \u044F \u043A\u043E\u043C\u043F\u043E\u043D\u0435\u043D\u0442 App \u0438 \u044F \u0443\u043C\u0435\u044E \u0432\u043E\u0437\u0432\u043E\u0440\u0430\u0449\u0430\u0442\u044C \u043D\u043E\u0432\u043E\u0441\u0442\u0438!',
-			React.createElement(News, { lastNews: my_news }),
-			React.createElement(Comments, null)
-		);
+var News = function (_React$Component2) {
+	_inherits(News, _React$Component2);
+
+	function News() {
+		_classCallCheck(this, News);
+
+		return _possibleConstructorReturn(this, (News.__proto__ || Object.getPrototypeOf(News)).apply(this, arguments));
 	}
-});
+
+	_createClass(News, [{
+		key: "render",
+		value: function render() {
+			var data = this.props.lastNews;
+			var newsTemplate = void 0;
+			if (data.length > 0) newsTemplate = data.map(function (item, index) {
+				return React.createElement(
+					"div",
+					{ key: index },
+					React.createElement(Article, { data: item })
+				);
+			});else newsTemplate = React.createElement(
+				"p",
+				null,
+				"\u041A \u0441\u043E\u0436\u0430\u043B\u0435\u043D\u0438\u044E \u043D\u043E\u0432\u043E\u0441\u0442\u0435\u0439 \u043D\u0435\u0442"
+			);
+			return React.createElement(
+				"div",
+				{ className: "News" },
+				newsTemplate,
+				React.createElement(
+					"strong",
+					{ className: data.length > 0 ? 'count-news' : 'count-news none' },
+					"\u0412\u0441\u0435\u0433\u043E \u043D\u043E\u0432\u043E\u0441\u0442\u0435\u0439: ",
+					data.length
+				)
+			);
+		}
+	}]);
+
+	return News;
+}(React.Component);
+
+var Comments = function (_React$Component3) {
+	_inherits(Comments, _React$Component3);
+
+	function Comments() {
+		_classCallCheck(this, Comments);
+
+		return _possibleConstructorReturn(this, (Comments.__proto__ || Object.getPrototypeOf(Comments)).apply(this, arguments));
+	}
+
+	_createClass(Comments, [{
+		key: "render",
+		value: function render() {
+			return React.createElement(
+				"div",
+				{ className: "comments" },
+				"\u041D\u0435\u0442 \u043D\u043E\u0432\u043E\u0441\u0442\u0435\u0435 - \u043A\u043E\u043C\u0435\u043D\u0442\u0438\u0440\u043E\u0432\u0430\u0442\u044C \u043D\u0435\u0447\u0435\u0433\u043E"
+			);
+		}
+	}]);
+
+	return Comments;
+}(React.Component);
+
+var App = function (_React$Component4) {
+	_inherits(App, _React$Component4);
+
+	function App() {
+		_classCallCheck(this, App);
+
+		return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+	}
+
+	_createClass(App, [{
+		key: "render",
+		value: function render() {
+			return React.createElement(
+				"div",
+				{ className: "App" },
+				React.createElement(
+					"h3",
+					null,
+					"\u041D\u043E\u0432\u043E\u0441\u0442\u0438"
+				),
+				React.createElement(News, { lastNews: my_news }),
+				React.createElement(Comments, null)
+			);
+		}
+	}]);
+
+	return App;
+}(React.Component);
 
 ReactDOM.render(React.createElement(App, null), document.getElementById("root"));
 

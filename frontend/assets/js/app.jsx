@@ -1,5 +1,5 @@
+import * as ReactDOM from "react-dom";
 let React = require('react');
-let ReactDOM = require('react-dom');
 import * as console from "debug";
 
 let my_news = [
@@ -20,21 +20,35 @@ let my_news = [
 console.log(React);
 console.log(ReactDOM);
 
-let News = React.createClass({
-	render: function () {
+class Article extends React.Component {
+	render() {
+		let author = this.props.data.author,
+			text = this.props.data.text;
+		return (
+			<div className="article">
+				<p className="news__author">{author}</p>
+				<p className="news__text">{text}</p>
+			</div>
+		)
+	}
+}
+
+class News extends React.Component {
+	render() {
 		let data = this.props.lastNews;
 		let newsTemplate;
 		if (data.length > 0)
 			newsTemplate = data.map(function (item, index) {
 				return (
 						<div key={index}>
-							<p className="news__author">{item.author}:</p>
-							<p className="news__text">{item.text}</p>
+							<Article data={item}/>
+							{/*<p className="news__author">{item.author}:</p>*/}
+							{/*<p className="news__text">{item.text}</p>*/}
 						</div>
 				)
 			});
 		else
-			newsTemplate = <p>К сожалению новостей нет</p>
+			newsTemplate = <p>К сожалению новостей нет</p>;
 		return (
 				<div className="News">
 					{newsTemplate}
@@ -44,29 +58,29 @@ let News = React.createClass({
 				</div>
 		)
 	}
-});
+}
 
-let Comments = React.createClass({
-	render: function () {
+class Comments extends React.Component {
+	render() {
 		return (
 			<div className="comments">
 				Нет новостее - коментировать нечего
 			</div>
 		)
 	}
-});
+}
 
-let App = React.createClass({
-	render: function () {
+class App extends React.Component {
+	render() {
 		return (
 				<div className="App">
-					Всем привет, я компонент App и я умею возворащать новости!
+					<h3>Новости</h3>
 					<News lastNews={my_news}/>
 					<Comments/>
 				</div>
 		)
 	}
-});
+}
 
 ReactDOM.render(
 		<App/>,
