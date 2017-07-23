@@ -1,14 +1,17 @@
 'use strict'
 
 const gulp = require('gulp');
-const babel = require('gulp-babel');
+// const babel = require('gulp-babel');
 const stylus = require('gulp-stylus');
+const browserify = require('browserify');
+const babelify = require('babelify');
 const sourcemaps = require('gulp-sourcemaps');
 const gulpIf = require('gulp-if');
 const del = require('del');
 const newer = require('gulp-newer');
 const autoprefixer = require('autoprefixer-stylus');
 const browserSync = require('browser-sync').create();
+const source = require('vinyl-source-stream');
 // var connectPHP = require('gulp-connect-php');
 
 const isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
@@ -27,12 +30,19 @@ gulp.task('styles', function(){
 
 // babel
 gulp.task('babel', () =>
-		gulp.src('frontend/assets/js/app.jsx')
-				.pipe(babel({
-					plugins: ['transform-react-jsx'],
-					presets: ['es2015']
-				}))
+//обработка без browserify
+		browserify({entries: 'frontend/assets/js/app.jsx', extensions: ['.jsx'], debug: false})
+				.transform('babelify', {presets: [['es2015', 'react']]})
+				.bundle()
+				.pipe(source('app.js'))
 				.pipe(gulp.dest('public/js'))
+		// gulp.src('frontend/assets/js/app.jsx')
+		// 		.pipe(babel({
+		// 			plugins: ['transform-react-jsx'],
+		// 			presets: ['es2015']
+		// 		}))
+		// 		.pipe(gulp.dest('public/js'))
+
 );
 
 //@TODO: Сделать обработку ошибок , чтобы gulp не приходилось перезагружать
