@@ -29,7 +29,7 @@ var menu = [{
 	food: "Цезарь с тигровыми криветками",
 	price: 390
 }, {
-	food: "Салат по тальянски",
+	food: "Салат по Итальянски",
 	price: 340
 }, {
 	food: "Салат Ницца",
@@ -64,11 +64,144 @@ var menu = [{
 }, {
 	food: "Кесадилья с курицей",
 	price: 290
+}, {
+	food: "Фоккачино с курицей барбекю",
+	price: 275
+}, {
+	food: "Тост с сыром и ветчиной",
+	price: 265
+}, {
+	food: "Мясная лазанья",
+	price: 320
+}, {
+	food: "Куриная грудкв с пюре",
+	price: 290
+}, {
+	food: "Куриная грудка с овощами",
+	price: 290
+}, {
+	food: "Сибас на пару с пюре",
+	price: 450
+}, {
+	food: "Сибас на пару с овощами гриль",
+	price: 450
+}, {
+	food: "Сибас на пару с кускусом и соусом песто",
+	price: 450
+}, {
+	food: "Сибас на пару с картофилем по домашнему",
+	price: 450
+}, {
+	food: "Биточки с томленой уткой",
+	price: 340
+}, {
+	food: "Лапша с тигровыми криветками",
+	price: 360
+}, {
+	food: "Паста карбанара",
+	price: 320
+}, {
+	food: "Паста Альфредо с курицей",
+	price: 325
+}, {
+	food: "Ригатони с копченым лососем",
+	price: 360
+}, {
+	food: "Торт Москва",
+	price: 275
+}, {
+	food: "Торт Медовик",
+	price: 250
+}, {
+	food: "Торт Прага",
+	price: 250
+}, {
+	food: "Торот Опера",
+	price: 240
+}, {
+	food: "Торт Наполеон с клубникой",
+	price: 270
+}, {
+	food: "Чизкейк Орео",
+	price: 250
+}, {
+	food: "Эклер ванильный",
+	price: 130
+}, {
+	food: "Эклер шоколадный",
+	price: 130
+}, {
+	food: "Тарталетка с ягодами",
+	price: 220
+}, {
+	food: "Торт лимонный с меренгой",
+	price: 195
+}, {
+	food: "Чизкейк яблочный",
+	price: 240
+}, {
+	food: "Чизкейк Нью-йорк",
+	price: 240
+}, {
+	food: "Фисташковый торт с профитроли",
+	price: 260
+}, {
+	food: "Блинчики малиновые",
+	price: 265
+}, {
+	food: "Блинчики легендарные с шоколадом",
+	price: 265
+}, {
+	food: "Блинчики с сыром и ветчиной",
+	price: 265
+}, {
+	food: "Блинчики с мясом",
+	price: 265
+}, {
+	food: "Блины с жюльеном",
+	price: 275
+}, {
+	food: "Блины с творогом",
+	price: 275
+}, {
+	food: "Блины яблочно-карамельные",
+	price: 265
+}, {
+	food: "Сырники со сметаной и малиновым соусом",
+	price: 265
+}, {
+	food: "Аква минерале с газом",
+	price: 130
+}, {
+	food: "Аква минерале без газа",
+	price: 130
+}, {
+	food: "Pepsi",
+	price: 140
+}, {
+	food: "Pepsi лайт",
+	price: 140
+}, {
+	food: "Mirinda orange",
+	price: 140
+}, {
+	food: "7up",
+	price: 140
+}, {
+	food: "Сок Я яблочный",
+	price: 150
+}, {
+	food: "Сок Я апельсиновый",
+	price: 150
 }];
 
 //TODO:[A.Ivankov] add sorting by type food
-//TODO:[A.Ivankov] add count colories
-//TODO:[A.Ivankov] filter minimum colores
+//TODO:[A.Ivankov] add count calories
+//TODO:[A.Ivankov] filter minimum calories
+//TODO:[A.Ivankov] sorting by street on food
+//TODO:[A.Ivankov] add image
+//TODO:[A.Ivankov] add review food
+//TODO:[A.Ivankov] click on plate food -> open more information about
 console.log(React);
 console.log(ReactDOM);
 
