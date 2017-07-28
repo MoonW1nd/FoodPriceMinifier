@@ -2,32 +2,79 @@ import * as ReactDOM from "react-dom";
 let React = require('react');
 import * as console from "debug";
 
-let my_news = [
+let menu = [
 	{
-		author: "Александр Коктар",
-		text: "В четверг ,четвертого числа..."
+		food: "Цезарь с курицей",
+		price: 350
 	},
 	{
-		author: "Семен Бунин",
-		text: "Считаю что доллар должен стоить 35 рублей!"
+		food: "Цезарь с тигровыми криветками",
+		price: 390
 	},
 	{
-		author: "Денис Семенихин",
-		text: "Всякая лысина от бога..."
+		food: "Салат по тальянски",
+		price: 340
+	},
+	{
+		food: "Салат Ницца",
+		price: 330
+	},
+	{
+		food: "Салат Греческий",
+		price: 330
+	},
+	{
+		food: "Салат Руккла и клубника",
+		price: 315
+	},
+	{
+		food: "Крем суп с шампиньонами",
+		price: 225
+	},
+	{
+		food: "Ролл Цезарь",
+		price: 255
+	},
+	{
+		food: "Ролл Филадельфия",
+		price: 265
+	},
+	{
+		food: "Ролл с вечиной и омлетом",
+		price: 255
+	},
+	{
+		food: "Клаб сэндвич",
+		price: 290
+	},
+	{
+		food: "Бургер",
+		price: 320
+	},
+	{
+		food: "Кесадилья овощная",
+		price: 245
+	},
+	{
+		food: "Кесадилья с курицей",
+		price: 290
 	}
 ];
 
+//TODO:[A.Ivankov] add sorting by type food
+//TODO:[A.Ivankov] add count colories
+//TODO:[A.Ivankov] filter minimum colores
 console.log(React);
 console.log(ReactDOM);
 
 class Article extends React.Component {
 	render() {
-		let author = this.props.data.author,
-			text = this.props.data.text;
+		let food = this.props.data.food,
+			price = this.props.data.price;
 		return (
 			<div className="article">
-				<p className="news__author">{author}</p>
-				<p className="news__text">{text}</p>
+				<p className="food__name">{food}</p>
+				<p className="food__price">{price}</p>
 			</div>
 		)
 	}
@@ -48,12 +95,12 @@ class News extends React.Component {
 				)
 			});
 		else
-			newsTemplate = <p>К сожалению новостей нет</p>;
+			newsTemplate = <p>Доступных блюд нет</p>;
 		return (
-				<div className="News">
+				<div className="food">
 					{newsTemplate}
-					<strong className={data.length > 0? 'count-news': 'count-news none'}>
-						Всего новостей: {data.length}
+					<strong className={data.length > 0? 'count-food': 'count-food none'}>
+						Всего предложений: {data.length}
 					</strong>
 				</div>
 		)
@@ -74,8 +121,9 @@ class App extends React.Component {
 	render() {
 		return (
 				<div className="App">
-					<h3>Новости</h3>
-					<News lastNews={my_news}/>
+					<h3>ShokoHelp</h3>
+					<div className="head-mind">Найдется всё</div>
+					<News lastNews={menu}/>
 					<Comments/>
 				</div>
 		)

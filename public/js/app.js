@@ -22,17 +22,53 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var React = require('react');
 
 
-var my_news = [{
-	author: "Александр Коктар",
-	text: "В четверг ,четвертого числа..."
+var menu = [{
+	food: "Цезарь с курицей",
+	price: 350
 }, {
-	author: "Семен Бунин",
-	text: "Считаю что доллар должен стоить 35 рублей!"
+	food: "Цезарь с тигровыми криветками",
+	price: 390
 }, {
-	author: "Денис Семенихин",
-	text: "Всякая лысина от бога..."
+	food: "Салат по тальянски",
+	price: 340
+}, {
+	food: "Салат Ницца",
+	price: 330
+}, {
+	food: "Салат Греческий",
+	price: 330
+}, {
+	food: "Салат Руккла и клубника",
+	price: 315
+}, {
+	food: "Крем суп с шампиньонами",
+	price: 225
+}, {
+	food: "Ролл Цезарь",
+	price: 255
+}, {
+	food: "Ролл Филадельфия",
+	price: 265
+}, {
+	food: "Ролл с вечиной и омлетом",
+	price: 255
+}, {
+	food: "Клаб сэндвич",
+	price: 290
+}, {
+	food: "Бургер",
+	price: 320
+}, {
+	food: "Кесадилья овощная",
+	price: 245
+}, {
+	food: "Кесадилья с курицей",
+	price: 290
 }];
 
+//TODO:[A.Ivankov] add sorting by type food
+//TODO:[A.Ivankov] add count colories
+//TODO:[A.Ivankov] filter minimum colores
 console.log(React);
 console.log(ReactDOM);
 
@@ -48,20 +84,20 @@ var Article = function (_React$Component) {
 	_createClass(Article, [{
 		key: "render",
 		value: function render() {
-			var author = this.props.data.author,
-			    text = this.props.data.text;
+			var food = this.props.data.food,
+			    price = this.props.data.price;
 			return React.createElement(
 				"div",
 				{ className: "article" },
 				React.createElement(
 					"p",
-					{ className: "news__author" },
-					author
+					{ className: "food__name" },
+					food
 				),
 				React.createElement(
 					"p",
-					{ className: "news__text" },
-					text
+					{ className: "food__price" },
+					price
 				)
 			);
 		}
@@ -93,16 +129,16 @@ var News = function (_React$Component2) {
 			});else newsTemplate = React.createElement(
 				"p",
 				null,
-				"\u041A \u0441\u043E\u0436\u0430\u043B\u0435\u043D\u0438\u044E \u043D\u043E\u0432\u043E\u0441\u0442\u0435\u0439 \u043D\u0435\u0442"
+				"\u0414\u043E\u0441\u0442\u0443\u043F\u043D\u044B\u0445 \u0431\u043B\u044E\u0434 \u043D\u0435\u0442"
 			);
 			return React.createElement(
 				"div",
-				{ className: "News" },
+				{ className: "food" },
 				newsTemplate,
 				React.createElement(
 					"strong",
-					{ className: data.length > 0 ? 'count-news' : 'count-news none' },
-					"\u0412\u0441\u0435\u0433\u043E \u043D\u043E\u0432\u043E\u0441\u0442\u0435\u0439: ",
+					{ className: data.length > 0 ? 'count-food' : 'count-food none' },
+					"\u0412\u0441\u0435\u0433\u043E \u043F\u0440\u0435\u0434\u043B\u043E\u0436\u0435\u043D\u0438\u0439: ",
 					data.length
 				)
 			);
@@ -153,9 +189,14 @@ var App = function (_React$Component4) {
 				React.createElement(
 					"h3",
 					null,
-					"\u041D\u043E\u0432\u043E\u0441\u0442\u0438"
+					"ShokoHelp"
 				),
-				React.createElement(News, { lastNews: my_news }),
+				React.createElement(
+					"div",
+					{ className: "head-mind" },
+					"\u041D\u0430\u0439\u0434\u0435\u0442\u0441\u044F \u0432\u0441\u0451"
+				),
+				React.createElement(News, { lastNews: menu }),
 				React.createElement(Comments, null)
 			);
 		}
