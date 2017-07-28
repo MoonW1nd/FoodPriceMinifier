@@ -19,9 +19,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var React = require('react');
-
-
 var menu = [{
 	food: "Цезарь с курицей",
 	price: 350
@@ -195,6 +192,9 @@ var menu = [{
 	price: 150
 }];
 
+var React = require('react');
+
+
 //TODO:[A.Ivankov] add sorting by type food
 //TODO:[A.Ivankov] add count calories
 //TODO:[A.Ivankov] filter minimum calories
@@ -202,6 +202,7 @@ var menu = [{
 //TODO:[A.Ivankov] add image
 //TODO:[A.Ivankov] add review food
 //TODO:[A.Ivankov] click on plate food -> open more information about
+
 console.log(React);
 console.log(ReactDOM);
 
@@ -296,7 +297,7 @@ var Comments = function (_React$Component3) {
 			return React.createElement(
 				"div",
 				{ className: "comments" },
-				"\u041D\u0435\u0442 \u043D\u043E\u0432\u043E\u0441\u0442\u0435\u0435 - \u043A\u043E\u043C\u0435\u043D\u0442\u0438\u0440\u043E\u0432\u0430\u0442\u044C \u043D\u0435\u0447\u0435\u0433\u043E"
+				"\u041A\u043E\u043C\u0435\u043D\u0442\u0430\u0440\u0438\u0438 - \u0432\u0440\u0435\u043C\u0435\u043D\u043D\u043E \u043D\u0435\u0434\u043E\u0441\u0442\u0443\u043F\u043D\u044B."
 			);
 		}
 	}]);

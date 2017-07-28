@@ -8,6 +8,7 @@ const babelify = require('babelify');
 const sourcemaps = require('gulp-sourcemaps');
 const gulpIf = require('gulp-if');
 const del = require('del');
+const concat = require('gulp-concat');
 const newer = require('gulp-newer');
 const autoprefixer = require('autoprefixer-stylus');
 const browserSync = require('browser-sync').create();
@@ -26,6 +27,13 @@ gulp.task('styles', function(){
 				}))
 				.pipe(gulpIf(isDevelopment, sourcemaps.write()))
 				.pipe(gulp.dest('public'));
+});
+
+//соединение всех jsx файлов в 1
+gulp.task('concat', function() {
+	return gulp.src('frontend/assets/js/jsxComponents/*.jsx')
+	.pipe(concat('app.jsx'))
+	.pipe(gulp.dest('frontend/assets/js'));
 });
 
 // babel
@@ -102,14 +110,15 @@ gulp.task('assets', function() {
 
 
 //команда сборки и запуска browser-sync
-gulp.task('build', ['styles',"babel", 'assets', 'watch','serve']);
+gulp.task('build', ['concat','styles',"babel", 'assets', 'watch','serve']);
+
 
 
 //слежение за файлами , при изменении перезагружает браузер
 gulp.task('watch', function() {
 		gulp.watch('frontend/css/**/*.*', ['styles']).on('change', browserSync.reload);
 		gulp.watch(['frontend/assets/**/*.*', "!frontend/assets/js/app.jsx"], ['assets']).on('change', browserSync.reload);
-		gulp.watch("frontend/assets/js/app.jsx", ['babel']).on('change', browserSync.reload);
+		gulp.watch("frontend/assets/js/jsxComponents/*.jsx", ['concat','babel']).on('change', browserSync.reload);
 });
 
 //функция перезагпузки браузера для HTML файлов
