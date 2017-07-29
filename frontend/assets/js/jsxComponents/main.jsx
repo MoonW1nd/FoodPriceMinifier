@@ -20,13 +20,16 @@ class Article extends React.Component {
 		return (
 				<div className="article">
 					<p className="food__name">{food}</p>
-					<p className="food__price">{price}</p>
+					<p className="food__price">
+						{price}
+						<spen className= "rubles" > руб.</spen>
+					</p>
 				</div>
 		)
 	}
 }
 
-class News extends React.Component {
+class Food extends React.Component {
 	render() {
 		let data = this.props.lastNews;
 		let newsTemplate;
@@ -69,7 +72,7 @@ class App extends React.Component {
 				<div className="App">
 					<h3>ShokoHelp</h3>
 					<div className="head-mind">Найдется всё</div>
-					<News lastNews={menu}/>
+					<Food lastNews={menu}/>
 					<Comments/>
 				</div>
 		)

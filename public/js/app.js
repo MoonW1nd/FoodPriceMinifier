@@ -231,7 +231,12 @@ var Article = function (_React$Component) {
 				React.createElement(
 					"p",
 					{ className: "food__price" },
-					price
+					price,
+					React.createElement(
+						"spen",
+						{ className: "rubles" },
+						" \u0440\u0443\u0431."
+					)
 				)
 			);
 		}
@@ -240,16 +245,16 @@ var Article = function (_React$Component) {
 	return Article;
 }(React.Component);
 
-var News = function (_React$Component2) {
-	_inherits(News, _React$Component2);
+var Food = function (_React$Component2) {
+	_inherits(Food, _React$Component2);
 
-	function News() {
-		_classCallCheck(this, News);
+	function Food() {
+		_classCallCheck(this, Food);
 
-		return _possibleConstructorReturn(this, (News.__proto__ || Object.getPrototypeOf(News)).apply(this, arguments));
+		return _possibleConstructorReturn(this, (Food.__proto__ || Object.getPrototypeOf(Food)).apply(this, arguments));
 	}
 
-	_createClass(News, [{
+	_createClass(Food, [{
 		key: "render",
 		value: function render() {
 			var data = this.props.lastNews;
@@ -279,7 +284,7 @@ var News = function (_React$Component2) {
 		}
 	}]);
 
-	return News;
+	return Food;
 }(React.Component);
 
 var Comments = function (_React$Component3) {
@@ -330,7 +335,7 @@ var App = function (_React$Component4) {
 					{ className: "head-mind" },
 					"\u041D\u0430\u0439\u0434\u0435\u0442\u0441\u044F \u0432\u0441\u0451"
 				),
-				React.createElement(News, { lastNews: menu }),
+				React.createElement(Food, { lastNews: menu }),
 				React.createElement(Comments, null)
 			);
 		}
