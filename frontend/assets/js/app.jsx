@@ -239,6 +239,7 @@ import * as console from "debug";
 //TODO:[A.Ivankov] add image
 //TODO:[A.Ivankov] add review food
 //TODO:[A.Ivankov] click on plate food -> open more information about
+//TODO:[A.Ivankov] click for select important food and click arrow for next
 
 console.log(React);
 console.log(ReactDOM);
@@ -254,6 +255,17 @@ class Article extends React.Component {
 						{price}
 						<spen className= "rubles" > руб.</spen>
 					</p>
+				</div>
+		)
+	}
+}
+
+class Arrow extends React.Component {
+	render() {
+		return(
+				<div className="arrow-next-left-wrapper">
+					<div className="arrow-next-right"/>
+					<div className="">Далее</div>
 				</div>
 		)
 	}
@@ -302,6 +314,7 @@ class App extends React.Component {
 				<div className="App">
 					<h3>ShokoHelp</h3>
 					<div className="head-mind">Найдется всё</div>
+					<Arrow/>
 					<Food lastNews={menu}/>
 					<Comments/>
 				</div>

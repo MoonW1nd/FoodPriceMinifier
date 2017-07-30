@@ -202,6 +202,7 @@ var React = require('react');
 //TODO:[A.Ivankov] add image
 //TODO:[A.Ivankov] add review food
 //TODO:[A.Ivankov] click on plate food -> open more information about
+//TODO:[A.Ivankov] click for select important food and click arrow for next
 
 console.log(React);
 console.log(ReactDOM);
@@ -245,8 +246,36 @@ var Article = function (_React$Component) {
 	return Article;
 }(React.Component);
 
-var Food = function (_React$Component2) {
-	_inherits(Food, _React$Component2);
+var Arrow = function (_React$Component2) {
+	_inherits(Arrow, _React$Component2);
+
+	function Arrow() {
+		_classCallCheck(this, Arrow);
+
+		return _possibleConstructorReturn(this, (Arrow.__proto__ || Object.getPrototypeOf(Arrow)).apply(this, arguments));
+	}
+
+	_createClass(Arrow, [{
+		key: "render",
+		value: function render() {
+			return React.createElement(
+				"div",
+				{ className: "arrow-next-left-wrapper" },
+				React.createElement("div", { className: "arrow-next-right" }),
+				React.createElement(
+					"div",
+					{ className: "" },
+					"\u0414\u0430\u043B\u0435\u0435"
+				)
+			);
+		}
+	}]);
+
+	return Arrow;
+}(React.Component);
+
+var Food = function (_React$Component3) {
+	_inherits(Food, _React$Component3);
 
 	function Food() {
 		_classCallCheck(this, Food);
@@ -287,8 +316,8 @@ var Food = function (_React$Component2) {
 	return Food;
 }(React.Component);
 
-var Comments = function (_React$Component3) {
-	_inherits(Comments, _React$Component3);
+var Comments = function (_React$Component4) {
+	_inherits(Comments, _React$Component4);
 
 	function Comments() {
 		_classCallCheck(this, Comments);
@@ -310,8 +339,8 @@ var Comments = function (_React$Component3) {
 	return Comments;
 }(React.Component);
 
-var App = function (_React$Component4) {
-	_inherits(App, _React$Component4);
+var App = function (_React$Component5) {
+	_inherits(App, _React$Component5);
 
 	function App() {
 		_classCallCheck(this, App);
@@ -335,6 +364,7 @@ var App = function (_React$Component4) {
 					{ className: "head-mind" },
 					"\u041D\u0430\u0439\u0434\u0435\u0442\u0441\u044F \u0432\u0441\u0451"
 				),
+				React.createElement(Arrow, null),
 				React.createElement(Food, { lastNews: menu }),
 				React.createElement(Comments, null)
 			);
