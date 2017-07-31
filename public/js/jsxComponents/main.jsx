@@ -20,6 +20,7 @@ class Article extends React.Component {
 				price = this.props.data.price;
 		return (
 				<div className="article">
+					<Checkbox/>
 					<p className="food__name">{food}</p>
 					<p className="food__price">
 						{price}
@@ -38,6 +39,24 @@ class Arrow extends React.Component {
 					<div className="">Далее</div>
 				</div>
 		)
+	}
+}
+
+class Checkbox extends React.Component {
+	// constructor(props) {
+	// 	super(props);
+	// 	this.state = {
+	// 		isChecked: true,
+	// 	};
+	// }
+	render() {
+		return (
+				<label>
+					<input type="checkbox"
+					       // checked={this.state.isChecked}
+					/>
+				</label>
+		);
 	}
 }
 
@@ -91,7 +110,7 @@ class App extends React.Component {
 		)
 	}
 }
-
+// ReactDOM.render(<Checkbox />, document.getElementById('checkbox'));
 ReactDOM.render(
 		<App/>,
 		document.getElementById("root")
