@@ -20,8 +20,10 @@ class Article extends React.Component {
 				price = this.props.data.price;
 		return (
 				<div className="article">
-					<Checkbox/>
-					<p className="food__name">{food}</p>
+					<div className="checkBox-wrapper">
+						<Checkbox/>
+						<p className="food__name">{food}</p>
+					</div>
 					<p className="food__price">
 						{price}
 						<spen className= "rubles" > руб.</spen>

@@ -224,11 +224,15 @@ var Article = function (_React$Component) {
 			return React.createElement(
 				"div",
 				{ className: "article" },
-				React.createElement(Checkbox, null),
 				React.createElement(
-					"p",
-					{ className: "food__name" },
-					food
+					"div",
+					{ className: "checkBox-wrapper" },
+					React.createElement(Checkbox, null),
+					React.createElement(
+						"p",
+						{ className: "food__name" },
+						food
+					)
 				),
 				React.createElement(
 					"p",
