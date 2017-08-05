@@ -228,9 +228,9 @@ let menu = [
 		price: 150
 	}
 ];
-import * as ReactDOM from "react-dom";
-let React = require('react');
-import * as console from "debug";
+// import * as React from "react";
+// import * as ReactDOM from "react-dom";
+
 
 //TODO:[A.Ivankov] add sorting by type food
 //TODO:[A.Ivankov] add count calories
@@ -284,10 +284,10 @@ class Arrow extends React.Component {
 
 class Food extends React.Component {
 	render() {
-		let data = this.props.lastNews;
-		let newsTemplate;
+		let data = this.props.menu;
+		let foodTemplate;
 		if (data.length > 0)
-			newsTemplate = data.map(function (item, index) {
+			foodTemplate = data.map(function (item, index) {
 				return (
 						<div key={index}>
 							<Article data={item}/>
@@ -297,10 +297,10 @@ class Food extends React.Component {
 				)
 			});
 		else
-			newsTemplate = <p>Доступных блюд нет</p>;
+			foodTemplate = <p>Доступных блюд нет</p>;
 		return (
 				<div className="food">
-					{newsTemplate}
+					{foodTemplate}
 					<strong className={data.length > 0? 'count-food': 'count-food none'}>
 						Всего предложений: {data.length}
 					</strong>
@@ -319,6 +319,16 @@ class Comments extends React.Component {
 	}
 }
 
+class CountAdd extends React.Component {
+	render() {
+		return(
+			<div className="count-add-food">
+				Выбрано блюд:
+			</div>
+		)
+	}
+}
+
 class App extends React.Component {
 	render() {
 		return (
@@ -326,14 +336,15 @@ class App extends React.Component {
 					<h3>ShokoHelp</h3>
 					<div className="head-mind">Найдется всё</div>
 					<Arrow/>
-					<Food lastNews={menu}/>
+					<Food menu={menu}/>
 					<Comments/>
 				</div>
 		)
 	}
 }
 // ReactDOM.render(<Checkbox />, document.getElementById('checkbox'));
-ReactDOM.render(
+
+ReactDOM.render (
 		<App/>,
 		document.getElementById("root")
 );
