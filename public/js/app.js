@@ -210,20 +210,33 @@ console.log(ReactDOM);
 var Article = function (_React$Component) {
 	_inherits(Article, _React$Component);
 
-	function Article() {
+	function Article(props) {
 		_classCallCheck(this, Article);
 
-		return _possibleConstructorReturn(this, (Article.__proto__ || Object.getPrototypeOf(Article)).apply(this, arguments));
+		var _this = _possibleConstructorReturn(this, (Article.__proto__ || Object.getPrototypeOf(Article)).call(this, props));
+
+		_this.state = { isActive: false };
+		_this.activatePlate = _this.activatePlate.bind(_this);
+		return _this;
 	}
 
 	_createClass(Article, [{
+		key: "activatePlate",
+		value: function activatePlate() {
+			this.setState(function (prevState) {
+				return {
+					isActive: !prevState.isActive
+				};
+			});
+		}
+	}, {
 		key: "render",
 		value: function render() {
 			var food = this.props.data.food,
 			    price = this.props.data.price;
 			return React.createElement(
 				"div",
-				{ className: "article" },
+				{ className: this.state.isActive ? "article active" : "article", onClick: this.activatePlate },
 				React.createElement(
 					"p",
 					{ className: "food__name" },
@@ -234,7 +247,7 @@ var Article = function (_React$Component) {
 					{ className: "food__price" },
 					price,
 					React.createElement(
-						"spen",
+						"span",
 						{ className: "rubles" },
 						" \u0440\u0443\u0431."
 					)

@@ -15,20 +15,31 @@ console.log(React);
 console.log(ReactDOM);
 
 class Article extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {isActive: false};
+		this.activatePlate = this.activatePlate.bind(this);
+	}
+	activatePlate() {
+		this.setState(prevState => ({
+			isActive: !prevState.isActive
+		}));
+	}
 	render() {
 		let food = this.props.data.food,
 				price = this.props.data.price;
 		return (
-				<div className="article">
+				<div className={this.state.isActive ? "article active" : "article"} onClick={this.activatePlate}>
 					<p className="food__name">{food}</p>
 					<p className="food__price">
 						{price}
-						<spen className= "rubles" > руб.</spen>
+						<span className= "rubles" > руб.</span>
 					</p>
 				</div>
 		)
 	}
 }
+
 
 class Arrow extends React.Component {
 	render() {
