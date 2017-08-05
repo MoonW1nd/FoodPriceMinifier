@@ -225,14 +225,9 @@ var Article = function (_React$Component) {
 				"div",
 				{ className: "article" },
 				React.createElement(
-					"div",
-					{ className: "checkBox-wrapper" },
-					React.createElement(Checkbox, null),
-					React.createElement(
-						"p",
-						{ className: "food__name" },
-						food
-					)
+					"p",
+					{ className: "food__name" },
+					food
 				),
 				React.createElement(
 					"p",
@@ -279,40 +274,8 @@ var Arrow = function (_React$Component2) {
 	return Arrow;
 }(React.Component);
 
-var Checkbox = function (_React$Component3) {
-	_inherits(Checkbox, _React$Component3);
-
-	function Checkbox() {
-		_classCallCheck(this, Checkbox);
-
-		return _possibleConstructorReturn(this, (Checkbox.__proto__ || Object.getPrototypeOf(Checkbox)).apply(this, arguments));
-	}
-
-	_createClass(Checkbox, [{
-		key: "render",
-
-		// constructor(props) {
-		// 	super(props);
-		// 	this.state = {
-		// 		isChecked: true,
-		// 	};
-		// }
-		value: function render() {
-			return React.createElement(
-				"label",
-				null,
-				React.createElement("input", { type: "checkbox"
-					// checked={this.state.isChecked}
-				})
-			);
-		}
-	}]);
-
-	return Checkbox;
-}(React.Component);
-
-var Food = function (_React$Component4) {
-	_inherits(Food, _React$Component4);
+var Food = function (_React$Component3) {
+	_inherits(Food, _React$Component3);
 
 	function Food() {
 		_classCallCheck(this, Food);
@@ -353,8 +316,8 @@ var Food = function (_React$Component4) {
 	return Food;
 }(React.Component);
 
-var Comments = function (_React$Component5) {
-	_inherits(Comments, _React$Component5);
+var Comments = function (_React$Component4) {
+	_inherits(Comments, _React$Component4);
 
 	function Comments() {
 		_classCallCheck(this, Comments);
@@ -376,8 +339,8 @@ var Comments = function (_React$Component5) {
 	return Comments;
 }(React.Component);
 
-var App = function (_React$Component6) {
-	_inherits(App, _React$Component6);
+var App = function (_React$Component5) {
+	_inherits(App, _React$Component5);
 
 	function App() {
 		_classCallCheck(this, App);
