@@ -304,11 +304,31 @@ var Article = function (_React$Component) {
 			    visible = this.state.visible;
 			return React.createElement(
 				"div",
-				{ className: this.state.isActive ? "article active" : "article", onClick: this.activatePlate },
+				{ className: this.state.isActive ? "article active" : "article" },
 				React.createElement(
-					"p",
-					{ className: "food__name" },
-					food
+					"div",
+					{ className: "food__content" },
+					React.createElement(
+						"p",
+						{ className: "food__name", onClick: this.activatePlate },
+						food
+					),
+					React.createElement(
+						"a",
+						{ href: "#", className: "food__readmore " + (visible ? 'none' : ''), onClick: this.readmoreClick },
+						"\u041F\u043E\u0434\u0440\u043E\u0431\u043D\u0435\u0435..."
+					),
+					React.createElement(
+						"p",
+						{ className: "food__calories " + (visible ? '' : 'none') },
+						React.createElement(
+							"span",
+							{ className: "food__calories__text" },
+							"\u041A\u043A\u0430\u043B:"
+						),
+						" ",
+						calories
+					)
 				),
 				React.createElement(
 					"p",
@@ -319,16 +339,6 @@ var Article = function (_React$Component) {
 						{ className: "rubles" },
 						" \u0440\u0443\u0431."
 					)
-				),
-				React.createElement(
-					"a",
-					{ href: "#", className: "food__readmore " + (visible ? 'none' : ''), onClick: this.readmoreClick },
-					"\u041F\u043E\u0434\u0440\u043E\u0431\u043D\u0435\u0435..."
-				),
-				React.createElement(
-					"p",
-					{ className: "food__calories" + (visible ? 'none' : '') },
-					calories
 				)
 			);
 		}

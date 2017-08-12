@@ -330,14 +330,17 @@ class Article extends React.Component {
 			calories = this.props.data.calories,
 			visible = this.state.visible;
 		return (
-			<div className={this.state.isActive ? "article active" : "article"} onClick={this.activatePlate}>
-				<p className="food__name">{food}</p>
+			<div className={this.state.isActive ? "article active" : "article"}>
+				<div className="food__content">
+					<p className="food__name" onClick={this.activatePlate}>{food}</p>
+					<a href="#" className={"food__readmore " + (visible ? 'none': '')} onClick={this.readmoreClick}>Подробнее...</a>
+					<p className={"food__calories " + (visible ? '': 'none')}>
+						<span className="food__calories__text">Ккал:</span> {calories}</p>
+				</div>
 				<p className="food__price">
 					{price}
 					<span className="rubles"> руб.</span>
 				</p>
-				<a href="#" className={"food__readmore " + (visible ? 'none': '')} onClick={this.readmoreClick}>Подробнее...</a>
-				<p className={"food__calories" + (visible ? 'none': '')}>{calories}</p>
 			</div>
 		)
 	}
