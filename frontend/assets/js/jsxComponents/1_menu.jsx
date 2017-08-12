@@ -1,107 +1,133 @@
 let menu = [
 	{
 		food: "Цезарь с курицей",
-		price: 350
+		price: 350,
+		calories: 100
 	},
 	{
 		food: "Цезарь с тигровыми криветками",
-		price: 390
+		price: 390,
+		calories: 100
 	},
 	{
 		food: "Салат по Итальянски",
-		price: 340
+		price: 340,
+		calories: 100
 	},
 	{
 		food: "Салат Ницца",
-		price: 330
+		price: 330,
+		calories: 100
 	},
 	{
 		food: "Салат Греческий",
-		price: 330
+		price: 330,
+		calories: 100
 	},
 	{
 		food: "Салат Руккла и клубника",
-		price: 315
+		price: 315,
+		calories: 100
 	},
 	{
 		food: "Крем суп с шампиньонами",
-		price: 225
+		price: 225,
+		calories: 100
 	},
 	{
 		food: "Ролл Цезарь",
-		price: 255
+		price: 255,
+		calories: 100
 	},
 	{
 		food: "Ролл Филадельфия",
-		price: 265
+		price: 265,
+		calories: 100
 	},
 	{
 		food: "Ролл с вечиной и омлетом",
-		price: 255
+		price: 255,
+		calories: 100
 	},
 	{
 		food: "Клаб сэндвич",
-		price: 290
+		price: 290,
+		calories: 100
 	},
 	{
 		food: "Бургер",
-		price: 320
+		price: 320,
+		calories: 100
 	},
 	{
 		food: "Кесадилья овощная",
-		price: 245
+		price: 245,
+		calories: 100
 	},
 	{
 		food: "Кесадилья с курицей",
-		price: 290
+		price: 290,
+		calories: 100
 	},
 	{
 		food: "Фоккачино с курицей барбекю",
-		price: 275
+		price: 275,
+		calories: 100
 	},
 	{
 		food: "Тост с сыром и ветчиной",
-		price: 265
+		price: 265,
+		calories: 100
 	},
 	{
 		food: "Мясная лазанья",
-		price: 320
+		price: 320,
+		calories: 100
 	},
 	{
 		food: "Куриная грудкв с пюре",
-		price: 290
+		price: 290,
+		calories: 100
 	},
 	{
 		food: "Куриная грудка с овощами",
-		price: 290
+		price: 290,
+		calories: 100
 	},
 	{
 		food: "Сибас на пару с пюре",
-		price: 450
+		price: 450,
+		calories: 100
 	},
 	{
 		food: "Сибас на пару с овощами гриль",
-		price: 450
+		price: 450,
+		calories: 100
 	},
 	{
 		food: "Сибас на пару с кускусом и соусом песто",
-		price: 450
+		price: 450,
+		calories: 100
 	},
 	{
 		food: "Сибас на пару с картофилем по домашнему",
-		price: 450
+		price: 450,
+		calories: 100
 	},
 	{
 		food: "Биточки с томленой уткой",
-		price: 340
+		price: 340,
+		calories: 100
 	},
 	{
 		food: "Лапша с тигровыми криветками",
-		price: 360
+		price: 360,
+		calories: 100
 	},
 	{
 		food: "Паста карбанара",
-		price: 320
+		price: 320,
+		calories: 100
 	},
 	{
 		food: "Паста Альфредо с курицей",
@@ -109,122 +135,152 @@ let menu = [
 	},
 	{
 		food: "Ригатони с копченым лососем",
-		price: 360
+		price: 360,
+		calories: 100
 	},
 	{
 		food: "Торт Москва",
-		price: 275
+		price: 275,
+		calories: 100
 	},
 	{
 		food: "Торт Медовик",
-		price: 250
+		price: 250,
+		calories: 100
 	},
 	{
 		food: "Торт Прага",
-		price: 250
+		price: 250,
+		calories: 100
 	},
 	{
 		food: "Торот Опера",
-		price: 240
+		price: 240,
+		calories: 100
 	},
 	{
 		food: "Торт Наполеон с клубникой",
-		price: 270
+		price: 270,
+		calories: 100
 	},
 	{
 		food: "Чизкейк Орео",
-		price: 250
+		price: 250,
+		calories: 100
 	},
 	{
 		food: "Эклер ванильный",
-		price: 130
+		price: 130,
+		calories: 100
 	},
 	{
 		food: "Эклер шоколадный",
-		price: 130
+		price: 130,
+		calories: 100
 	},
 	{
 		food: "Тарталетка с ягодами",
-		price: 220
+		price: 220,
+		calories: 100
 	},
 	{
 		food: "Торт лимонный с меренгой",
-		price: 195
+		price: 195,
+		calories: 100
 	},
 	{
 		food: "Чизкейк яблочный",
-		price: 240
+		price: 240,
+		calories: 100
 	},
 	{
 		food: "Чизкейк Нью-йорк",
-		price: 240
+		price: 240,
+		calories: 100
 	},
 	{
 		food: "Фисташковый торт с профитроли",
-		price: 260
+		price: 260,
+		calories: 100
 	},
 	{
 		food: "Блинчики малиновые",
-		price: 265
+		price: 265,
+		calories: 100
 	},
 	{
 		food: "Блинчики легендарные с шоколадом",
-		price: 265
+		price: 265,
+		calories: 100
 	},
 	{
 		food: "Блинчики с сыром и ветчиной",
-		price: 265
+		price: 265,
+		calories: 100
 	},
 	{
 		food: "Блинчики с мясом",
-		price: 265
+		price: 265,
+		calories: 100
 	},
 	{
 		food: "Блины с жюльеном",
-		price: 275
+		price: 275,
+		calories: 100
 	},
 	{
 		food: "Блины с творогом",
-		price: 275
+		price: 275,
+		calories: 100
 	},
 	{
 		food: "Блины яблочно-карамельные",
-		price: 265
+		price: 265,
+		calories: 100
 	},
 	{
 		food: "Сырники со сметаной и малиновым соусом",
-		price: 265
+		price: 265,
+		calories: 100
 	},
 	{
 		food: "Аква минерале с газом",
-		price: 130
+		price: 130,
+		calories: 100
 	},
 	{
 		food: "Аква минерале без газа",
-		price: 130
+		price: 130,
+		calories: 100
 	},
 	{
 		food: "Pepsi",
-		price: 140
+		price: 140,
+		calories: 100
 	},
 	{
 		food: "Pepsi лайт",
-		price: 140
+		price: 140,
+		calories: 100
 	},
 	{
 		food: "Mirinda orange",
-		price: 140
+		price: 140,
+		calories: 100
 	},
 	{
 		food: "7up",
-		price: 140
+		price: 140,
+		calories: 100
 	},
 	{
 		food: "Сок Я яблочный",
-		price: 150
+		price: 150,
+		calories: 100
 	},
 	{
 		food: "Сок Я апельсиновый",
-		price: 150
+		price: 150,
+		calories: 100
 	}
 ];

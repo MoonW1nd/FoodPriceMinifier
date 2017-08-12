@@ -1,5 +1,6 @@
 // import * as React from "react";
 // import * as ReactDOM from "react-dom";
+import PropTypes from 'prop-types';
 
 
 //TODO:[A.Ivankov] add sorting by type food
@@ -17,8 +18,12 @@ console.log(ReactDOM);
 class Article extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {isActive: false};
+		this.state = {
+			isActive: false,
+			visible: false
+		};
 		this.activatePlate = this.activatePlate.bind(this);
+		this.readmoreClick = this.readmoreClick.bind(this);
 	}
 	
 	activatePlate() {
@@ -27,16 +32,17 @@ class Article extends React.Component {
 		}));
 	}
 	
-	propTypes () {
-		data: React.PropTypes.share({
-			author: React.PropTypes.string.isRequired,
-			text: React.PropTypes.string.isRequired
-		})
+	readmoreClick(e) {
+		e.preventDefault();
+		this.setState(prevState => ({
+			visible: !prevState.visible
+		}));
 	}
-	
 	render() {
 		let food = this.props.data.food,
-			price = this.props.data.price;
+			price = this.props.data.price,
+			calories = this.props.data.calories,
+			visible = this.state.visible;
 		return (
 			<div className={this.state.isActive ? "article active" : "article"} onClick={this.activatePlate}>
 				<p className="food__name">{food}</p>
@@ -44,11 +50,20 @@ class Article extends React.Component {
 					{price}
 					<span className="rubles"> руб.</span>
 				</p>
+				<a href="#" className={"food__readmore " + (visible ? 'none': '')} onClick={this.readmoreClick}>Подробнее...</a>
+				<p className={"food__calories" + (visible ? 'none': '')}>{calories}</p>
 			</div>
 		)
 	}
 }
 
+Article.propTypes ={
+	data: React.PropTypes.shape({
+		food: React.PropTypes.string.isRequired,
+		price: React.PropTypes.number.isRequired,
+		calories: React.PropTypes.number
+	})
+}
 
 class Arrow extends React.Component {
 	render() {
