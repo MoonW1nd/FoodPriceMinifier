@@ -20,22 +20,31 @@ class Article extends React.Component {
 		this.state = {isActive: false};
 		this.activatePlate = this.activatePlate.bind(this);
 	}
+	
 	activatePlate() {
 		this.setState(prevState => ({
 			isActive: !prevState.isActive
 		}));
 	}
+	
+	propTypes () {
+		data: React.PropTypes.share({
+			author: React.PropTypes.string.isRequired,
+			text: React.PropTypes.string.isRequired
+		})
+	}
+	
 	render() {
 		let food = this.props.data.food,
-				price = this.props.data.price;
+			price = this.props.data.price;
 		return (
-				<div className={this.state.isActive ? "article active" : "article"} onClick={this.activatePlate}>
-					<p className="food__name">{food}</p>
-					<p className="food__price">
-						{price}
-						<span className= "rubles" > руб.</span>
-					</p>
-				</div>
+			<div className={this.state.isActive ? "article active" : "article"} onClick={this.activatePlate}>
+				<p className="food__name">{food}</p>
+				<p className="food__price">
+					{price}
+					<span className="rubles"> руб.</span>
+				</p>
+			</div>
 		)
 	}
 }
@@ -43,11 +52,11 @@ class Article extends React.Component {
 
 class Arrow extends React.Component {
 	render() {
-		return(
-				<div className="arrow-next-left-wrapper">
-					<div className="arrow-next-right"/>
-					<div className="">Далее</div>
-				</div>
+		return (
+			<div className="arrow-next-left-wrapper">
+				<div className="arrow-next-right"/>
+				<div className="">Далее</div>
+			</div>
 		)
 	}
 }
@@ -59,22 +68,22 @@ class Food extends React.Component {
 		if (data.length > 0)
 			foodTemplate = data.map(function (item, index) {
 				return (
-						<div key={index}>
-							<Article data={item}/>
-							{/*<p className="news__author">{item.author}:</p>*/}
-							{/*<p className="news__text">{item.text}</p>*/}
-						</div>
+					<div key={index}>
+						<Article data={item}/>
+						{/*<p className="news__author">{item.author}:</p>*/}
+						{/*<p className="news__text">{item.text}</p>*/}
+					</div>
 				)
 			});
 		else
 			foodTemplate = <p>Доступных блюд нет</p>;
 		return (
-				<div className="food">
-					{foodTemplate}
-					<strong className={data.length > 0? 'count-food': 'count-food none'}>
-						Всего предложений: {data.length}
-					</strong>
-				</div>
+			<div className="food">
+				{foodTemplate}
+				<strong className={data.length > 0 ? 'count-food' : 'count-food none'}>
+					Всего предложений: {data.length}
+				</strong>
+			</div>
 		)
 	}
 }
@@ -82,16 +91,16 @@ class Food extends React.Component {
 class Comments extends React.Component {
 	render() {
 		return (
-				<div className="comments">
-					Коментарии - временно недоступны.
-				</div>
+			<div className="comments">
+				Коментарии - временно недоступны.
+			</div>
 		)
 	}
 }
 
 class CountAdd extends React.Component {
 	render() {
-		return(
+		return (
 			<div className="count-add-food">
 				Выбрано блюд:
 			</div>
@@ -102,20 +111,21 @@ class CountAdd extends React.Component {
 class App extends React.Component {
 	render() {
 		return (
-				<div className="App">
-					<h3>ShokoHelp</h3>
-					<div className="head-mind">Найдется всё</div>
-					<Arrow/>
-					<Food menu={menu}/>
-					<Comments/>
-				</div>
+			<div className="App">
+				<h3>ShokoHelp</h3>
+				<div className="head-mind">Найдется всё</div>
+				<Arrow/>
+				<Food menu={menu}/>
+				<Comments/>
+			</div>
 		)
 	}
 }
+
 // ReactDOM.render(<Checkbox />, document.getElementById('checkbox'));
 
-ReactDOM.render (
-		<App/>,
-		document.getElementById("root")
+ReactDOM.render(
+	<App/>,
+	document.getElementById("root")
 );
 

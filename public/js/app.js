@@ -220,6 +220,14 @@ var Article = function (_React$Component) {
 			});
 		}
 	}, {
+		key: "propTypes",
+		value: function propTypes() {
+			data: React.PropTypes.share({
+				author: React.PropTypes.string.isRequired,
+				text: React.PropTypes.string.isRequired
+			});
+		}
+	}, {
 		key: "render",
 		value: function render() {
 			var food = this.props.data.food,
@@ -399,6 +407,7 @@ var App = function (_React$Component6) {
 
 	return App;
 }(React.Component);
+
 // ReactDOM.render(<Checkbox />, document.getElementById('checkbox'));
 
 ReactDOM.render(React.createElement(App, null), document.getElementById("root"));
