@@ -57,7 +57,8 @@ p
 
 .article
 	display flex
-	justify-content space-between
+	position relative
+	justify-content center
 	flex-wrap wrap
 	align-items center
 	background #ffffff
@@ -110,3 +111,25 @@ label
 	position relative
 	bottom 4px
 	left 4px
+
+.content__wrapper
+	width 95%
+	display flex
+	justify-content space-around
+	align-items center
+
+.food__readmore
+	transition transform 1s
+	transform-origin 25% 50%
+	transform rotate(0deg)
+	padding 0!important
+	position absolute
+	left 10px
+	border 10px solid transparent
+	border-left 10px solid #00796B
+//border-bottom 25px solid
+	&.reverse
+		transform rotate(90deg)
+
+.food__calories
+	margin 0 10px

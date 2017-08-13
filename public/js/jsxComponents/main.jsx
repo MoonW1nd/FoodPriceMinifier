@@ -38,6 +38,7 @@ class Article extends React.Component {
 			visible: !prevState.visible
 		}));
 	}
+	
 	render() {
 		let food = this.props.data.food,
 			price = this.props.data.price,
@@ -45,16 +46,18 @@ class Article extends React.Component {
 			visible = this.state.visible;
 		return (
 			<div className={this.state.isActive ? "article active" : "article"}>
-				<div className="food__content">
-					<p className="food__name" onClick={this.activatePlate}>{food}</p>
-					<a href="#" className={"food__readmore " + (visible ? 'none': '')} onClick={this.readmoreClick}>Подробнее...</a>
-					<p className={"food__calories " + (visible ? '': 'none')}>
-						<span className="food__calories__text">Ккал:</span> {calories}</p>
+				<div className={"food__readmore " + (visible ? 'reverse': '')} onClick={this.readmoreClick}></div>
+				<div className="content__wrapper" onClick={this.activatePlate}>
+					<div className="food__content">
+						<p className="food__name">{food}</p>
+						<p className={"food__calories " + (visible ? '': 'none')}>
+							<span className="food__calories__text">Ккал:</span> {calories}</p>
+					</div>
+					<p className="food__price">
+						{price}
+						<span className="rubles"> руб.</span>
+					</p>
 				</div>
-				<p className="food__price">
-					{price}
-					<span className="rubles"> руб.</span>
-				</p>
 			</div>
 		)
 	}
