@@ -355,8 +355,54 @@ Article.propTypes = {
 	})
 };
 
-var Arrow = function (_React$Component2) {
-	_inherits(Arrow, _React$Component2);
+var InputFind = function (_React$Component2) {
+	_inherits(InputFind, _React$Component2);
+
+	function InputFind(props) {
+		_classCallCheck(this, InputFind);
+
+		var _this2 = _possibleConstructorReturn(this, (InputFind.__proto__ || Object.getPrototypeOf(InputFind)).call(this, props));
+
+		_this2.state = {
+			textOnInput: ""
+		};
+		_this2.handlerInputFindChange = _this2.handlerInputFindChange.bind(_this2);
+		_this2.handlerSubmit = _this2.handlerSubmit.bind(_this2);
+		return _this2;
+	}
+
+	_createClass(InputFind, [{
+		key: "handlerSubmit",
+		value: function handlerSubmit(event) {
+			event.preventDefault();
+		}
+	}, {
+		key: "handlerInputFindChange",
+		value: function handlerInputFindChange(event) {
+			this.setState({ textOnInput: event.target.value });
+			console.log(this.state.textOnInput);
+		}
+	}, {
+		key: "render",
+		value: function render() {
+			return React.createElement(
+				"form",
+				{ onSubmit: this.handlerSubmit },
+				React.createElement("input", {
+					type: "text",
+					placeholder: "\u041F\u043E\u0438\u0441\u043A \u0431\u043B\u044E\u0434\u0430",
+					value: this.state.email,
+					onChange: this.handlerInputFindChange
+				})
+			);
+		}
+	}]);
+
+	return InputFind;
+}(React.Component);
+
+var Arrow = function (_React$Component3) {
+	_inherits(Arrow, _React$Component3);
 
 	function Arrow() {
 		_classCallCheck(this, Arrow);
@@ -383,8 +429,8 @@ var Arrow = function (_React$Component2) {
 	return Arrow;
 }(React.Component);
 
-var Food = function (_React$Component3) {
-	_inherits(Food, _React$Component3);
+var Food = function (_React$Component4) {
+	_inherits(Food, _React$Component4);
 
 	function Food() {
 		_classCallCheck(this, Food);
@@ -425,8 +471,8 @@ var Food = function (_React$Component3) {
 	return Food;
 }(React.Component);
 
-var Comments = function (_React$Component4) {
-	_inherits(Comments, _React$Component4);
+var Comments = function (_React$Component5) {
+	_inherits(Comments, _React$Component5);
 
 	function Comments() {
 		_classCallCheck(this, Comments);
@@ -448,8 +494,8 @@ var Comments = function (_React$Component4) {
 	return Comments;
 }(React.Component);
 
-var CountAdd = function (_React$Component5) {
-	_inherits(CountAdd, _React$Component5);
+var CountAdd = function (_React$Component6) {
+	_inherits(CountAdd, _React$Component6);
 
 	function CountAdd() {
 		_classCallCheck(this, CountAdd);
@@ -471,8 +517,8 @@ var CountAdd = function (_React$Component5) {
 	return CountAdd;
 }(React.Component);
 
-var App = function (_React$Component6) {
-	_inherits(App, _React$Component6);
+var App = function (_React$Component7) {
+	_inherits(App, _React$Component7);
 
 	function App() {
 		_classCallCheck(this, App);
@@ -496,6 +542,7 @@ var App = function (_React$Component6) {
 					{ className: "head-mind" },
 					"\u041D\u0430\u0439\u0434\u0435\u0442\u0441\u044F \u0432\u0441\u0451"
 				),
+				React.createElement(InputFind, null),
 				React.createElement(Arrow, null),
 				React.createElement(Food, { menu: menu }),
 				React.createElement(Comments, null)

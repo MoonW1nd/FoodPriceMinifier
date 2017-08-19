@@ -357,6 +357,39 @@ Article.propTypes ={
 	})
 }
 
+class InputFind extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			textOnInput: ""
+		};
+		this.handlerInputFindChange = this.handlerInputFindChange.bind(this)
+		this.handlerSubmit = this.handlerSubmit.bind(this)
+	}
+
+	handlerSubmit(event) {
+		event.preventDefault()
+	}
+
+	handlerInputFindChange(event) {
+		this.setState({textOnInput: event.target.value});
+		console.log(this.state.textOnInput);
+	}
+
+	render () {
+		return (
+				<form onSubmit={this.handlerSubmit}>
+					<input
+						type="text"
+					  placeholder="Поиск блюда"
+					  value={this.state.email}
+					  onChange={this.handlerInputFindChange}
+					/>
+				</form>
+		)
+	}
+}
+
 class Arrow extends React.Component {
 	render() {
 		return (
@@ -421,6 +454,7 @@ class App extends React.Component {
 			<div className="App">
 				<h3>ShokoHelp</h3>
 				<div className="head-mind">Найдется всё</div>
+				<InputFind/>
 				<Arrow/>
 				<Food menu={menu}/>
 				<Comments/>
