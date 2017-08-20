@@ -75,6 +75,7 @@ class InputFind extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			displayedFood: menu,
 			textOnInput: ""
 		};
 		this.handlerInputFindChange = this.handlerInputFindChange.bind(this)
@@ -84,22 +85,27 @@ class InputFind extends React.Component {
 	handlerSubmit(event) {
 		event.preventDefault()
 	}
-
 	handlerInputFindChange(event) {
+		let searchQuery = event.target.value.toLowerCase();
+		let displayedFood = menu.filter(function (el) {
+			let searchValue = el.food.toLowerCase();
+			return searchValue.indexOf(searchQuery) !== -1;
+		});
 		this.setState({textOnInput: event.target.value});
-		console.log(this.state.textOnInput);
+		this.setState({displayedFood: displayedFood})
 	}
 
 	render () {
 		return (
-				<form onSubmit={this.handlerSubmit}>
+				<div>
 					<input
 						type="text"
 					  placeholder="Поиск блюда"
 					  value={this.state.email}
 					  onChange={this.handlerInputFindChange}
 					/>
-				</form>
+					<Food menu={this.state.displayedFood}/>
+				</div>
 		)
 	}
 }
@@ -118,6 +124,7 @@ class Arrow extends React.Component {
 class Food extends React.Component {
 	render() {
 		let data = this.props.menu;
+		console.log(data);
 		let foodTemplate;
 		if (data.length > 0)
 			foodTemplate = data.map(function (item, index) {
@@ -168,9 +175,9 @@ class App extends React.Component {
 			<div className="App">
 				<h3>ShokoHelp</h3>
 				<div className="head-mind">Найдется всё</div>
-				<InputFind/>
+				<InputFind menu={menu}/>
 				<Arrow/>
-				<Food menu={menu}/>
+				{/*<Food menu={menu}/>*/}
 				<Comments/>
 			</div>
 		)

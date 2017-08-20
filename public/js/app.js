@@ -364,6 +364,7 @@ var InputFind = function (_React$Component2) {
 		var _this2 = _possibleConstructorReturn(this, (InputFind.__proto__ || Object.getPrototypeOf(InputFind)).call(this, props));
 
 		_this2.state = {
+			displayedFood: menu,
 			textOnInput: ""
 		};
 		_this2.handlerInputFindChange = _this2.handlerInputFindChange.bind(_this2);
@@ -379,21 +380,27 @@ var InputFind = function (_React$Component2) {
 	}, {
 		key: "handlerInputFindChange",
 		value: function handlerInputFindChange(event) {
+			var searchQuery = event.target.value.toLowerCase();
+			var displayedFood = menu.filter(function (el) {
+				var searchValue = el.food.toLowerCase();
+				return searchValue.indexOf(searchQuery) !== -1;
+			});
 			this.setState({ textOnInput: event.target.value });
-			console.log(this.state.textOnInput);
+			this.setState({ displayedFood: displayedFood });
 		}
 	}, {
 		key: "render",
 		value: function render() {
 			return React.createElement(
-				"form",
-				{ onSubmit: this.handlerSubmit },
+				"div",
+				null,
 				React.createElement("input", {
 					type: "text",
 					placeholder: "\u041F\u043E\u0438\u0441\u043A \u0431\u043B\u044E\u0434\u0430",
 					value: this.state.email,
 					onChange: this.handlerInputFindChange
-				})
+				}),
+				React.createElement(Food, { menu: this.state.displayedFood })
 			);
 		}
 	}]);
@@ -442,6 +449,7 @@ var Food = function (_React$Component4) {
 		key: "render",
 		value: function render() {
 			var data = this.props.menu;
+			console.log(data);
 			var foodTemplate = void 0;
 			if (data.length > 0) foodTemplate = data.map(function (item, index) {
 				return React.createElement(
@@ -542,9 +550,8 @@ var App = function (_React$Component7) {
 					{ className: "head-mind" },
 					"\u041D\u0430\u0439\u0434\u0435\u0442\u0441\u044F \u0432\u0441\u0451"
 				),
-				React.createElement(InputFind, null),
+				React.createElement(InputFind, { menu: menu }),
 				React.createElement(Arrow, null),
-				React.createElement(Food, { menu: menu }),
 				React.createElement(Comments, null)
 			);
 		}
