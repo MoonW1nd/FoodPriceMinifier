@@ -330,7 +330,7 @@ class Article extends React.Component {
 			calories = this.props.data.calories,
 			visible = this.state.visible;
 		return (
-			<div className={this.state.isActive ? "article active" : "article"}>
+			<div className={(this.state.isActive ? "article active" : "article") + (visible? " more__info":"")}>
 				<div className={"food__readmore " + (visible ? 'reverse': '')} onClick={this.readmoreClick}></div>
 				<div className="content__wrapper" onClick={this.activatePlate}>
 					<div className="food__content">

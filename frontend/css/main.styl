@@ -38,7 +38,7 @@ body
 	
 h3
 	font-family FuturaBold
-	font-size 50px
+	font-size 60px
 	margin 10px 0 0 0
 
 .food
@@ -70,9 +70,15 @@ p
 	box-shadow 2px 2px 5px -1px accent-color
 	padding 3px 5px
 	cursor pointer
+	height 65px
+	transition height 1s
+	overflow hidden
 	&.active
 		background default-primary-color
 		color text-primary-color
+	&.more__info
+		transition height 1s
+		height 100px
 
 .arrow-next-left-wrapper
 	display flex
@@ -134,3 +140,14 @@ label
 
 .food__calories
 	margin 0 10px
+
+.search-field
+	border 0
+	border-bottom 1px solid accent-color
+	font-family FuturaLight
+	width 20vw
+	font-size 25px
+	transition border 0.5s
+	&:focus
+		outline 0
+		border-bottom 2px solid default-primary-color

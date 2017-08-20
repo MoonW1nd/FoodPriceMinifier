@@ -303,7 +303,7 @@ var Article = function (_React$Component) {
 			    visible = this.state.visible;
 			return React.createElement(
 				"div",
-				{ className: this.state.isActive ? "article active" : "article" },
+				{ className: (this.state.isActive ? "article active" : "article") + (visible ? " more__info" : "") },
 				React.createElement("div", { className: "food__readmore " + (visible ? 'reverse' : ''), onClick: this.readmoreClick }),
 				React.createElement(
 					"div",
