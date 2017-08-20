@@ -289,7 +289,6 @@ let menu = [
 import PropTypes from 'prop-types';
 
 
-//TODO:[A.Ivankov] add sorting by type food
 //TODO:[A.Ivankov] add count calories
 //TODO:[A.Ivankov] filter minimum calories
 //TODO:[A.Ivankov] sorting by street on food
@@ -387,6 +386,7 @@ class InputFind extends React.Component {
 					<input
 						type="text"
 					  placeholder="Поиск блюда"
+					  className="search-field"
 					  value={this.state.email}
 					  onChange={this.handlerInputFindChange}
 					/>
@@ -423,7 +423,7 @@ class Food extends React.Component {
 				)
 			});
 		else
-			foodTemplate = <p>Доступных блюд нет</p>;
+			foodTemplate = <p>Блюд с таким названием не найдено :(</p>;
 		return (
 			<div className="food">
 				{foodTemplate}
@@ -463,14 +463,12 @@ class App extends React.Component {
 				<div className="head-mind">Найдется всё</div>
 				<InputFind menu={menu}/>
 				<Arrow/>
-				{/*<Food menu={menu}/>*/}
 				<Comments/>
 			</div>
 		)
 	}
 }
 
-// ReactDOM.render(<Checkbox />, document.getElementById('checkbox'));
 
 ReactDOM.render(
 	<App/>,

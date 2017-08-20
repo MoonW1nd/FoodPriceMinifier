@@ -247,7 +247,6 @@ var menu = [{
 // import * as ReactDOM from "react-dom";
 
 
-//TODO:[A.Ivankov] add sorting by type food
 //TODO:[A.Ivankov] add count calories
 //TODO:[A.Ivankov] filter minimum calories
 //TODO:[A.Ivankov] sorting by street on food
@@ -397,6 +396,7 @@ var InputFind = function (_React$Component2) {
 				React.createElement("input", {
 					type: "text",
 					placeholder: "\u041F\u043E\u0438\u0441\u043A \u0431\u043B\u044E\u0434\u0430",
+					className: "search-field",
 					value: this.state.email,
 					onChange: this.handlerInputFindChange
 				}),
@@ -460,7 +460,7 @@ var Food = function (_React$Component4) {
 			});else foodTemplate = React.createElement(
 				"p",
 				null,
-				"\u0414\u043E\u0441\u0442\u0443\u043F\u043D\u044B\u0445 \u0431\u043B\u044E\u0434 \u043D\u0435\u0442"
+				"\u0411\u043B\u044E\u0434 \u0441 \u0442\u0430\u043A\u0438\u043C \u043D\u0430\u0437\u0432\u0430\u043D\u0438\u0435\u043C \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D\u043E :("
 			);
 			return React.createElement(
 				"div",
@@ -559,8 +559,6 @@ var App = function (_React$Component7) {
 
 	return App;
 }(React.Component);
-
-// ReactDOM.render(<Checkbox />, document.getElementById('checkbox'));
 
 ReactDOM.render(React.createElement(App, null), document.getElementById("root"));
 
