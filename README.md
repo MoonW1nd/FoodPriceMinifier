@@ -1,6 +1,6 @@
 # React - **ShokoHelper** </br>
 Проект помогающий добрать заказа до минимальной суммы доставки заказа</br>
-##### Web-site(beta):[ShokoHelper](https://moonw1nd.github.io/React/public/)</br>
+##### Web-site(beta):[ShokoHelper](https://moonw1nd.github.io/FoodPriceMinifier/public/)</br>
 ==========================================================================
 ## То что предстоит сделать:
 - написать логику отбора
