@@ -174,7 +174,7 @@ class App extends React.Component {
 		return (
 			<div className="App">
 				<h3>ShokoHelp</h3>
-				<div className="head-mind">Найдется всё</div>
+				<div className="head-mind">by <span className="author__name">Alexander Ivankov</span></div>
 				<InputFind menu={menu}/>
 				<Arrow/>
 				<Comments/>

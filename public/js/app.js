@@ -548,7 +548,12 @@ var App = function (_React$Component7) {
 				React.createElement(
 					"div",
 					{ className: "head-mind" },
-					"\u041D\u0430\u0439\u0434\u0435\u0442\u0441\u044F \u0432\u0441\u0451"
+					"by ",
+					React.createElement(
+						"span",
+						{ className: "author__name" },
+						"Alexander Ivankov"
+					)
 				),
 				React.createElement(InputFind, { menu: menu }),
 				React.createElement(Arrow, null),
