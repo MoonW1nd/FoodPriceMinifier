@@ -1,3 +1,4 @@
+
 let menu = [
 	{
 		food: "Цезарь с курицей",
@@ -284,8 +285,8 @@ let menu = [
 		calories: 100
 	}
 ];
-// import * as React from "react";
-// import * as ReactDOM from "react-dom";
+import * as React from "react";
+import * as ReactDOM from "react-dom";
 import PropTypes from 'prop-types';
 
 
@@ -455,23 +456,10 @@ class CountAdd extends React.Component {
 	}
 }
 
-class App extends React.Component {
-	render() {
-		return (
-			<div className="App">
-				<h3>ShokoHelp</h3>
-				<div className="head-mind">by <span className="author__name">Alexander Ivankov</span></div>
-				<InputFind menu={menu}/>
-				<Arrow/>
-				<Comments/>
-			</div>
-		)
-	}
-}
 
 
-ReactDOM.render(
-	<App/>,
-	document.getElementById("root")
-);
+// ReactDOM.render(
+// 	<App/>,
+// 	document.getElementById("root")
+// );
 

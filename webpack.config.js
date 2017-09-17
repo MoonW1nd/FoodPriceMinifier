@@ -1,4 +1,4 @@
-var webpack = require('webpack');
+let webpack = require('webpack');
 
 module.exports = {
 	entry: "./src/main.jsx",
@@ -16,12 +16,12 @@ module.exports = {
 			},
 			{
 				test: /\.css$/,
-				loader: "style-loader!css-loader!autoprefixer-loader",
+				loader: "style-loader!css-loader!postcss-loader",
 				exclude: [/node_modules/, /public/]
 			},
 			{
-				test: /\.less$/,
-				loader: "style-loader!css-loader!autoprefixer-loader!less",
+				test: /\.styl$/,
+				loader: "style-loader!css-loader!postcss-loader!stylus",
 				exclude: [/node_modules/,/public/]
 			},
 			{
