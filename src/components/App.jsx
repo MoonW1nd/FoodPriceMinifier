@@ -1,4 +1,6 @@
 import React from "react";
+import MenuWithSearch from "./MenuWithSearch.jsx";
+import menu from "./menu.json";
 
 class App extends React.Component {
 	render() {
@@ -6,9 +8,9 @@ class App extends React.Component {
 			<div className="App">
 				<h3>ShokoHelp</h3>
 				<div className="head-mind">by <span className="author__name">Alexander Ivankov</span></div>
-				{/*<InputFind menu={menu}/>*/}
+				<MenuWithSearch menu={menu}/>
 				{/*<Arrow/>*/}
-				<Comments/>
+				{/*<Comments/>*/}
 			</div>
 		)
 	}
