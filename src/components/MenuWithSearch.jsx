@@ -1,5 +1,6 @@
 import React from "react";
 import menu from "./menu.json";
+import Food from "./Food.jsx"
 
 export default class MenuWithSearch extends React.Component {
 	constructor(props) {
@@ -35,7 +36,7 @@ export default class MenuWithSearch extends React.Component {
 					value={this.state.email}
 					onChange={this.handlerInputFindChange}
 				/>
-				{/*<Food menu={this.state.displayedFood}/>*/}
+				<Food menu={this.state.displayedFood}/>
 			</div>
 		)
 	}
