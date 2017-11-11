@@ -8,11 +8,10 @@ module.exports = {
 		filename: "bundle.js"
 	},
 	module: {
-		loaders: [
-			{
+		loaders: [{
 				test: /\.js$/,
 				loader: "babel",
-				exclude: [/node_modules/,/public/]
+				exclude: [/node_modules/, /public/]
 			},
 			{
 				test: /\.css$/,
@@ -22,7 +21,7 @@ module.exports = {
 			{
 				test: /\.styl$/,
 				loader: "style-loader!css-loader!postcss-loader!stylus",
-				exclude: [/node_modules/,/public/]
+				exclude: [/node_modules/, /public/]
 			},
 			{
 				test: /\.gif$/,

@@ -1,5 +1,4 @@
 import React from "react";
-import propTypes from "prop-types";
 
 export default class Article extends React.Component {
 	constructor(props) {
@@ -49,6 +48,7 @@ export default class Article extends React.Component {
 	}
 }
 
+// TODO:[A.Ivankov] add setup propTypes
 // Article.propTypes ={
 // 	data: React.PropTypes.shape({
 // 		food: React.PropTypes.string.isRequired,
