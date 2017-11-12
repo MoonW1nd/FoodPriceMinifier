@@ -13,3 +13,64 @@
 	&:focus
 		outline 0
 		border-bottom 2px solid default-primary-color
+.food__name
+	font-family: FuturaMedium
+	margin 0 10px
+
+.food__content
+	flex-basis 500px
+	margin 0 10px
+
+.food__price
+	margin 0 10px
+	flex-basis 100px
+
+h3
+	font-family FuturaBold
+	font-size 60px
+	margin 10px 0 0 0
+
+.food
+	padding 30px 0
+	& div
+		padding 5px 0
+	& .count-food
+		font-family FuturaBold
+		font-size 17px
+		color secondary-text-color
+
+.none
+	display none!important
+
+p
+	margin 0 auto
+
+.food__readmore
+	transition transform 1s
+	transform-origin 25% 50%
+	transform rotate(0deg)
+	padding 0 !important
+	position absolute
+	left 10px
+	border 10px solid transparent
+	border-left 10px solid #00796B
+//border-bottom 25px solid
+	&.reverse
+		transform rotate(90deg)
+
+.food__calories
+	margin 0 10px
+
+.menu__wrapper
+	display flex
+	margin-left 0
+	&.two-section
+		transition margin-left linear 1s
+		margin-left -16vw
+
+.menu__sorted
+	margin-left: 4vw
+	width: 30vw
+	opacity 1
+	&.none
+		opacity 0

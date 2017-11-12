@@ -62,6 +62,8 @@
 
 	var _AppJsx2 = _interopRequireDefault(_AppJsx);
 
+	__webpack_require__(194);
+
 	_reactDom2["default"].render(_react2["default"].createElement(_AppJsx2["default"], null), document.getElementById("root"));
 
 	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/Users/1/Sites/Education/React/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "main.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
@@ -22224,7 +22226,9 @@
 
 	var _menuJson2 = _interopRequireDefault(_menuJson);
 
-	__webpack_require__(189);
+	__webpack_require__(194);
+
+	__webpack_require__(196);
 
 	var App = (function (_React$Component) {
 		_inherits(App, _React$Component);
@@ -22299,9 +22303,11 @@
 
 	var _menuJson2 = _interopRequireDefault(_menuJson);
 
-	var _FoodJsx = __webpack_require__(187);
+	var _ArticleJsx = __webpack_require__(187);
 
-	var _FoodJsx2 = _interopRequireDefault(_FoodJsx);
+	var _ArticleJsx2 = _interopRequireDefault(_ArticleJsx);
+
+	__webpack_require__(192);
 
 	var MenuWithSearch = (function (_React$Component) {
 		_inherits(MenuWithSearch, _React$Component);
@@ -22312,10 +22318,13 @@
 			_get(Object.getPrototypeOf(MenuWithSearch.prototype), "constructor", this).call(this, props);
 			this.state = {
 				displayedFood: _menuJson2["default"],
-				textOnInput: ""
+				textOnInput: "",
+				needDisplayResult: false,
+				activeArticles: []
 			};
 			this.handlerInputFindChange = this.handlerInputFindChange.bind(this);
 			this.handlerSubmit = this.handlerSubmit.bind(this);
+			this.handlerSelectFood = this.handlerSelectFood.bind(this);
 		}
 
 		_createClass(MenuWithSearch, [{
@@ -22324,30 +22333,78 @@
 				event.preventDefault();
 			}
 		}, {
+			key: "handlerSelectFood",
+			value: function handlerSelectFood(idArticle, state) {
+				if (state === false) {
+					this.setState({ needDisplayResult: true });
+				}
+
+				console.log(this.state.displayedFood[idArticle]);
+				console.log(this.state.needDisplayResult);
+			}
+		}, {
 			key: "handlerInputFindChange",
 			value: function handlerInputFindChange(event) {
 				var searchQuery = event.target.value.toLowerCase();
+
 				var displayedFood = _menuJson2["default"].filter(function (el) {
 					var searchValue = el.food.toLowerCase();
 					return searchValue.indexOf(searchQuery) !== -1;
 				});
+
 				this.setState({ textOnInput: event.target.value });
 				this.setState({ displayedFood: displayedFood });
 			}
 		}, {
 			key: "render",
 			value: function render() {
+				var data = this.state.displayedFood;
+				var handler = this.handlerSelectFood;
+				var needDisplayResult = this.state.needDisplayResult;
+				var foodTemplate = undefined;
+				if (data.length > 0) foodTemplate = data.map(function (item, index) {
+					return _react2["default"].createElement(
+						"div",
+						{ key: index },
+						_react2["default"].createElement(_ArticleJsx2["default"], { index: index, data: item, selectFood: handler })
+					);
+				});else foodTemplate = _react2["default"].createElement(
+					"p",
+					null,
+					"Блюд с таким названием не найдено :("
+				);
 				return _react2["default"].createElement(
 					"div",
-					null,
-					_react2["default"].createElement("input", {
-						type: "text",
-						placeholder: "Поиск блюда",
-						className: "search-field",
-						value: this.state.email,
-						onChange: this.handlerInputFindChange
-					}),
-					_react2["default"].createElement(_FoodJsx2["default"], { menu: this.state.displayedFood })
+					{ className: "menu__wrapper " + (needDisplayResult ? 'two-section' : 'one-section') },
+					_react2["default"].createElement(
+						"section",
+						null,
+						_react2["default"].createElement("input", {
+							type: "text",
+							placeholder: "Поиск блюда",
+							className: "search-field",
+							value: this.state.email,
+							onChange: this.handlerInputFindChange
+						}),
+						_react2["default"].createElement(
+							"div",
+							{ className: "food" },
+							foodTemplate,
+							_react2["default"].createElement(
+								"strong",
+								{ className: data.length > 0 ? 'count-food' : 'count-food none' },
+								"Всего предложений: ",
+								data.length
+							)
+						)
+					),
+					_react2["default"].createElement(
+						"section",
+						{ className: "menu__sorted " + (needDisplayResult ? '' : 'none') },
+						"Наилучшие предложения: ",
+						_react2["default"].createElement("br", null),
+						"Скоро здесь что-то будет :)"
+					)
 				);
 			}
 		}]);
@@ -22392,83 +22449,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _ArticleJsx = __webpack_require__(188);
-
-	var _ArticleJsx2 = _interopRequireDefault(_ArticleJsx);
-
-	var Food = (function (_React$Component) {
-		_inherits(Food, _React$Component);
-
-		function Food() {
-			_classCallCheck(this, Food);
-
-			_get(Object.getPrototypeOf(Food.prototype), "constructor", this).apply(this, arguments);
-		}
-
-		_createClass(Food, [{
-			key: "render",
-			value: function render() {
-				var data = this.props.menu;
-				console.log(data);
-				var foodTemplate = undefined;
-				if (data.length > 0) foodTemplate = data.map(function (item, index) {
-					return _react2["default"].createElement(
-						"div",
-						{ key: index },
-						_react2["default"].createElement(_ArticleJsx2["default"], { data: item })
-					);
-				});else foodTemplate = _react2["default"].createElement(
-					"p",
-					null,
-					"Блюд с таким названием не найдено :("
-				);
-				return _react2["default"].createElement(
-					"div",
-					{ className: "food" },
-					foodTemplate,
-					_react2["default"].createElement(
-						"strong",
-						{ className: data.length > 0 ? 'count-food' : 'count-food none' },
-						"Всего предложений: ",
-						data.length
-					)
-				);
-			}
-		}]);
-
-		return Food;
-	})(_react2["default"].Component);
-
-	exports["default"] = Food;
-	module.exports = exports["default"];
-
-	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/Users/1/Sites/Education/React/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "Food.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
-
-/***/ }),
-/* 188 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("/Users/1/Sites/Education/React/node_modules/react-hot-api/modules/index.js"), RootInstanceProvider = require("/Users/1/Sites/Education/React/node_modules/react-hot-loader/RootInstanceProvider.js"), ReactMount = require("react-dom/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _react = __webpack_require__(183);
-
-	var _react2 = _interopRequireDefault(_react);
+	__webpack_require__(188);
 
 	var Article = (function (_React$Component) {
 		_inherits(Article, _React$Component);
@@ -22493,6 +22474,7 @@
 						isActive: !prevState.isActive
 					};
 				});
+				this.props.selectFood(this.props.index, this.state.isActive);
 			}
 		}, {
 			key: "readMoreClick",
@@ -22551,23 +22533,23 @@
 	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/Users/1/Sites/Education/React/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot apply hot update to " + "Article.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 
 /***/ }),
-/* 189 */
+/* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(190);
+	var content = __webpack_require__(189);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(192)(content, {});
+	var update = __webpack_require__(191)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/autoprefixer-loader/index.js!../../node_modules/stylus-loader/index.js?resolve url!./main.styl", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/autoprefixer-loader/index.js!../../node_modules/stylus-loader/index.js?resolve url!./main.styl");
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/autoprefixer-loader/index.js!../../node_modules/stylus-loader/index.js?resolve url!./Article.styl", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/autoprefixer-loader/index.js!../../node_modules/stylus-loader/index.js?resolve url!./Article.styl");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -22577,21 +22559,21 @@
 	}
 
 /***/ }),
-/* 190 */
+/* 189 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(191)();
+	exports = module.exports = __webpack_require__(190)();
 	// imports
 
 
 	// module
-	exports.push([module.id, ".arrow-next-left-wrapper {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  height: 100px;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  position: fixed;\n  top: 55vh;\n  left: 85vw;\n  -ms-flex-pack: distribute;\n      justify-content: space-around;\n}\n.checkBox-wrapper {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n.arrow-next-right {\n  width: 25px;\n  height: 25px;\n  border-style: solid;\n  border-bottom: 2px;\n  border-left: 2px;\n  -webkit-transform: rotate(45deg);\n          transform: rotate(45deg);\n}\n.comments {\n  color: secondary-text-color;\n  font-family: FuturaLight;\n}\n.head-mind {\n  margin: 0;\n  position: relative;\n  bottom: 15px;\n  color: secondary-text-color;\n  font-size: 16px;\n}\nlabel {\n  position: relative;\n  bottom: 4px;\n  left: 4px;\n}\n.content__wrapper {\n  width: 95%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-pack: distribute;\n      justify-content: space-around;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n.author__name {\n  color: #b02f19;\n}\n", ""]);
+	exports.push([module.id, ".article {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  position: relative;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  background: #fff;\n  color: #212121;\n  border: 1px solid #9e9e9e;\n  width: 60vw;\n  margin: 0 0 5px;\n  box-shadow: 2px 2px 5px -1px #9e9e9e;\n  padding: 3px 5px;\n  cursor: pointer;\n  height: 65px;\n  transition: height 1s;\n  overflow: hidden;\n}\n.article.active {\n  background: #00796b;\n  color: #fff;\n}\n.article.more__info {\n  transition: height 1s;\n  height: 100px;\n}\n.content__wrapper {\n  width: 95%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n", ""]);
 
 	// exports
 
 
 /***/ }),
-/* 191 */
+/* 190 */
 /***/ (function(module, exports) {
 
 	/*
@@ -22647,7 +22629,7 @@
 
 
 /***/ }),
-/* 192 */
+/* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/*
@@ -22896,6 +22878,126 @@
 		if(oldSrc)
 			URL.revokeObjectURL(oldSrc);
 	}
+
+
+/***/ }),
+/* 192 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(193);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(191)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/autoprefixer-loader/index.js!../../node_modules/stylus-loader/index.js?resolve url!./MenuWithSearch.styl", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/autoprefixer-loader/index.js!../../node_modules/stylus-loader/index.js?resolve url!./MenuWithSearch.styl");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ }),
+/* 193 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(190)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".food__calories {\n  margin: 0 10px;\n}\n.search-field {\n  border: 0;\n  border-bottom: 1px solid #9e9e9e;\n  font-family: FuturaLight;\n  width: 20vw;\n  font-size: 25px;\n  transition: border 0.5s;\n}\n.search-field:focus {\n  outline: 0;\n  border-bottom: 2px solid #00796b;\n}\n.food__name {\n  font-family: FuturaMedium;\n  margin: 0 10px;\n}\n.food__content {\n  -ms-flex-preferred-size: 500px;\n      flex-basis: 500px;\n  margin: 0 10px;\n}\n.food__price {\n  margin: 0 10px;\n  -ms-flex-preferred-size: 100px;\n      flex-basis: 100px;\n}\nh3 {\n  font-family: FuturaBold;\n  font-size: 60px;\n  margin: 10px 0 0 0;\n}\n.food {\n  padding: 30px 0;\n}\n.food div {\n  padding: 5px 0;\n}\n.food .count-food {\n  font-family: FuturaBold;\n  font-size: 17px;\n  color: #757575;\n}\n.none {\n  display: none !important;\n}\np {\n  margin: 0 auto;\n}\n.food__readmore {\n  transition: -webkit-transform 1s;\n  transition: transform 1s;\n  transition: transform 1s, -webkit-transform 1s;\n  -webkit-transform-origin: 25% 50%;\n          transform-origin: 25% 50%;\n  -webkit-transform: rotate(0deg);\n          transform: rotate(0deg);\n  padding: 0 !important;\n  position: absolute;\n  left: 10px;\n  border: 10px solid transparent;\n  border-left: 10px solid #00796b;\n}\n.reverse {\n  -webkit-transform: rotate(90deg);\n          transform: rotate(90deg);\n}\n.food__calories {\n  margin: 0 10px;\n}\n.menu__wrapper {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  margin-left: 0;\n}\n.menu__wrapper.two-section {\n  transition: margin-left linear 1s;\n  margin-left: -16vw;\n}\n.menu__sorted {\n  margin-left: 4vw;\n  width: 30vw;\n  opacity: 1;\n}\n.menu__sorted.none {\n  opacity: 0;\n}\n", ""]);
+
+	// exports
+
+
+/***/ }),
+/* 194 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(195);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(191)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/autoprefixer-loader/index.js!../../node_modules/stylus-loader/index.js?resolve url!./main.styl", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/autoprefixer-loader/index.js!../../node_modules/stylus-loader/index.js?resolve url!./main.styl");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ }),
+/* 195 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(190)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".arrow-next-left-wrapper {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  height: 100px;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  position: fixed;\n  top: 55vh;\n  left: 85vw;\n  -ms-flex-pack: distribute;\n      justify-content: space-around;\n}\n.checkBox-wrapper {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n.arrow-next-right {\n  width: 25px;\n  height: 25px;\n  border-style: solid;\n  border-bottom: 2px;\n  border-left: 2px;\n  -webkit-transform: rotate(45deg);\n          transform: rotate(45deg);\n}\n.comments {\n  color: #757575;\n  font-family: FuturaLight;\n}\n.head-mind {\n  margin: 0;\n  position: relative;\n  bottom: 15px;\n  color: #757575;\n  font-size: 16px;\n}\nlabel {\n  position: relative;\n  bottom: 4px;\n  left: 4px;\n}\n.author__name {\n  color: #b02f19;\n}\n", ""]);
+
+	// exports
+
+
+/***/ }),
+/* 196 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(197);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(191)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!../node_modules/css-loader/index.js!../node_modules/autoprefixer-loader/index.js!../node_modules/stylus-loader/index.js?resolve url!./App.styl", function() {
+				var newContent = require("!!../node_modules/css-loader/index.js!../node_modules/autoprefixer-loader/index.js!../node_modules/stylus-loader/index.js?resolve url!./App.styl");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ }),
+/* 197 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(190)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".App {\n  width: 1010px;\n}\nbody {\n  font-family: FuturaLight;\n  font-size: 24px;\n  color: #00796b;\n  background: #fff;\n  min-width: 100%;\n}\n#root {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: start;\n      -ms-flex-pack: start;\n          justify-content: flex-start;\n  width: 60vw;\n  padding-left: 20vw;\n}\n", ""]);
+
+	// exports
 
 
 /***/ })

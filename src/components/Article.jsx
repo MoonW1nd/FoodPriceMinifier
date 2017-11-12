@@ -16,6 +16,7 @@ export default class Article extends React.Component {
 		this.setState(prevState => ({
 			isActive: !prevState.isActive
 		}));
+		this.props.selectFood(this.props.index, this.state.isActive)
 	}
 
 	readMoreClick(e) {
