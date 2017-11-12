@@ -1,4 +1,4 @@
-let webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
 	entry: "./src/main.jsx",
@@ -20,7 +20,7 @@ module.exports = {
 			},
 			{
 				test: /\.styl$/,
-				loader: "style-loader!css-loader!autoprefixer-loader!stylus",
+				loader: "style-loader!css-loader!autoprefixer-loader!stylus?resolve url",
 				exclude: [/node_modules/, /public/]
 			},
 			{
@@ -50,4 +50,4 @@ module.exports = {
 			}
 		]
 	}
-}
+};

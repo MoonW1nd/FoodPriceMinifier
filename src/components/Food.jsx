@@ -1,5 +1,6 @@
 import React from "react";
 import Article from "./Article.jsx";
+import "./Food.styl"
 
 export default class Food extends React.Component {
 	render() {
@@ -11,8 +12,6 @@ export default class Food extends React.Component {
 				return (
 					<div key={index}>
 						<Article data={item}/>
-						{/*<p className="news__author">{item.author}:</p>*/}
-						{/*<p className="news__text">{item.text}</p>*/}
 					</div>
 				)
 			});
