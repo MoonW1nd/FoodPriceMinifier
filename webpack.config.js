@@ -15,12 +15,12 @@ module.exports = {
 			},
 			{
 				test: /\.css$/,
-				loader: "style-loader!css-loader!postcss-loader",
+				loader: "style-loader!css-loader!autoprefixer-loader",
 				exclude: [/node_modules/, /public/]
 			},
 			{
 				test: /\.styl$/,
-				loader: "style-loader!css-loader!postcss-loader!stylus",
+				loader: "style-loader!css-loader!autoprefixer-loader!stylus",
 				exclude: [/node_modules/, /public/]
 			},
 			{

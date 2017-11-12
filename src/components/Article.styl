@@ -1,0 +1,25 @@
+@import "../styles/pallete.styl"
+
+.article
+	display flex
+	position relative
+	justify-content center
+	flex-wrap wrap
+	align-items center
+	background #ffffff
+	color primary-text-color
+	border 1px solid accent-color
+	width 60vw
+	margin 0 0 5px
+	box-shadow 2px 2px 5px -1px accent-color
+	padding 3px 5px
+	cursor pointer
+	height 65px
+	transition height 1s
+	overflow hidden
+	&.active
+		background default-primary-color
+		color text-primary-color
+	&.more__info
+		transition height 1s
+		height 100px

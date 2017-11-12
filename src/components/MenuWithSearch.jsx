@@ -1,6 +1,7 @@
 import React from "react";
-import menu from "./menu.json";
-import Food from "./Food.jsx"
+import menu from "../menu.json";
+import Food from "./Food.jsx";
+import "./MenuWithSearch.styl";
 
 export default class MenuWithSearch extends React.Component {
 	constructor(props) {

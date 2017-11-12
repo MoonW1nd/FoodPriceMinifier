@@ -1,78 +1,6 @@
 @import "fonts.styl"
 @import "pallete.styl"
 
-.App
-	width 1010px
-
-body
-	font-family: FuturaLight
-	font-size 24px
-	color default-primary-color
-	background #ffffff
-	min-width 100%
-
-#root
-	display flex
-	justify-content flex-start
-	width 60vw
-	padding-left 20vw
-
-.food__name
-	font-family: FuturaMedium
-	margin 0 10px
-
-.food__content
-	flex-basis 500px
-	margin 0 10px
-
-.food__price
-	margin 0 10px
-	flex-basis 100px
-	
-h3
-	font-family FuturaBold
-	font-size 60px
-	margin 10px 0 0 0
-
-.food
-	padding 30px 0
-	& div
-		padding 5px 0
-	& .count-food
-		font-family FuturaBold
-		font-size 17px
-		color secondary-text-color
-
-.none
-	display none!important
-
-p
-	margin 0 auto
-
-.article
-	display flex
-	position relative
-	justify-content center
-	flex-wrap wrap
-	align-items center
-	background #ffffff
-	color primary-text-color
-	border 1px solid accent-color
-	width 60vw
-	margin 0 0 5px
-	box-shadow 2px 2px 5px -1px accent-color
-	padding 3px 5px
-	cursor pointer
-	height 65px
-	transition height 1s
-	overflow hidden
-	&.active
-		background default-primary-color
-		color text-primary-color
-	&.more__info
-		transition height 1s
-		height 100px
-
 .arrow-next-left-wrapper
 	display flex
 	align-items center
@@ -117,33 +45,6 @@ label
 	display flex
 	justify-content space-around
 	align-items center
-
-.food__readmore
-	transition transform 1s
-	transform-origin 25% 50%
-	transform rotate(0deg)
-	padding 0!important
-	position absolute
-	left 10px
-	border 10px solid transparent
-	border-left 10px solid #00796B
-//border-bottom 25px solid
-	&.reverse
-		transform rotate(90deg)
-
-.food__calories
-	margin 0 10px
-
-.search-field
-	border 0
-	border-bottom 1px solid accent-color
-	font-family FuturaLight
-	width 20vw
-	font-size 25px
-	transition border 0.5s
-	&:focus
-		outline 0
-		border-bottom 2px solid default-primary-color
 
 .author__name
 	color #B02F19

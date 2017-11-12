@@ -1,6 +1,7 @@
 import React from "react";
-import MenuWithSearch from "./MenuWithSearch.jsx";
+import MenuWithSearch from "./components/MenuWithSearch.jsx";
 import menu from "./menu.json";
+import "./App.styl"
 
 class App extends React.Component {
 	render() {
